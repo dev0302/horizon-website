@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <!-- Basic Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Horizon BVCOE - Debating Society</title>
+  <meta name="description" content="Horizon BVCOE - Where Voices Rise, Ideas Collide, and Thought Finds Its True Horizon.">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="events.css">
+  <link rel="stylesheet" href="family.css">
+  <link rel="stylesheet" href="mentor.css">
+  <link rel="stylesheet" href="footer.css">
+  <link rel="stylesheet" href="landingpage2.css">
+  <link rel="stylesheet" href="aboutus.css">
+  <link rel="stylesheet" href="animations.css">
+  
+  <!-- External Libraries -->
+  <!-- Feather Icons -->
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+
+<body>
+  <!-- Main Container with Gradient Background -->
+  <div class="min-h-screen bg-gradient">
+    <!-- Header Section -->
+    <header class="custom-header">
+      <nav class="custom-nav container">
+        <!-- Logo Area -->
+        <div class="logo-area">
+          <img id="horizon_logo2" src="horizon_logo2.jpg" alt="Horizon BVCOE Logo" style="width: 45px; height: 45px; margin-right: 0.5rem;">
+          <span class="logo-text">HORIZON BVCOE</span>
+        </div>
+    
+        <!-- Desktop Navigation Links -->
+        <div class="nav-links desktop">
+          <a href="#home" class="nav-item">Home</a>
+          <a href="#about-us" class="nav-item">About Us</a>
+          <a href="#family" class="nav-item">Family</a>
+          <a href="#event-section" class="nav-item">Events</a>
+        </div>
+    
+        <!-- CTA Button -->
+        <div class="desktop cta-button">
+          <button class="btn-cta" id="contact-us">Contact Us</button>
+        </div>
+    
+        <!-- Mobile Menu Toggle -->
+        <div class="menu-toggle" id="menu-toggle">
+          <i data-feather="menu"></i>
+        </div>
+      </nav>
+    
+      <!-- Mobile Menu (Hidden by default) -->
+      <div class="mobile-menu hidden" id="mobile-menu">
+        <a href="#home" class="nav-item">Home</a>
+        <a href="#about-us" class="nav-item">About Us</a>
+        <a href="#family" class="nav-item">Family</a>
+        <a href="#event-section" class="nav-item">Events</a>
+        <button class="btn-cta full-width" id="contact-us">Contact Us</button>
+      </div>
+    </header>
+
+    <!-- Main Content Sections -->
+    <main class="main-content">
+      <!-- Hero Section with Animated Background -->
+      <section class="hero-section" id="home">
+        <!-- Animated Background Elements -->
+        <div class="background-container">
+          <!-- SVG Curved Lines -->
+          <svg class="svg-container" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="grad1" x1="1" y1="0" x2="0" y2="0">
+                <stop offset="0%" stop-color="#22d3ee" stop-opacity="0" />
+                <stop offset="50%" stop-color="#22d3ee" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+              </linearGradient>
+              <linearGradient id="grad2" x1="1" y1="0" x2="0" y2="0">
+                <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0" />
+                <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path id="path1" class="svg-path path-cyan" d="M 100 100 Q 300 0 500 100 T 900 100" />
+            <path id="path2" class="svg-path path-violet" d="M 0 200 Q 200 100 400 200 T 800 200" />
+            <path id="path3" class="svg-path path-cyan" d="M 100 600 Q 300 500 500 600 T 900 600" />
+          </svg>
+
+          <!-- Straight Lines -->
+          <div class="lines-container">
+            <div class="animated-line line-cyan" style="top: 15%"></div>
+            <div class="animated-line line-violet" style="top: 25%"></div>
+            <div class="animated-line line-cyan" style="top: 35%"></div>
+          </div>
+
+          <!-- Glowing Orbs -->
+          <div class="orb orb-cyan"></div>
+          <div class="orb orb-violet"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="content container text-center">
+          <div class="logo-container">
+            <div class="society-logo">
+              <div class="logo-glow"></div>
+              <div class="logo-background">
+                <img src="horizon-logo.jpg" alt="Horizon Society Logo" class="sparkles-icon">
+              </div>
+            </div>
+          </div>
+          <h1 class="hero-title">HORIZON BVCOE</h1>
+          <p class="hero-subtitle">"Horizon — Where Voices Rise, Ideas Collide, and Thought Finds Its True Horizon."</p>
+        </div>
+      </section>
+
+      <!-- About Us Section -->
+      <div class="about-content" id="about-us">
+        <div class="main-section">
+          <div class="content-left">
+            <p id="about_us_para">About Us</p>
+            <p class="section-description">
+              Horizon isn't just a society — it's a movement of minds, a space where voices rise, ideas collide, and thought finds its true horizon. Here, words aren't mere sounds; they are forces that challenge conventions, spark conversations, and inspire change. At Horizon, we don't debate to dominate — we speak to understand, we listen to grow, and we think to transform. From the power of the spoken word to the strength of silent reflections, Horizon becomes the canvas for expression, intellect, and empathy. It is a community of thoughtful rebels — curious enough to question, bold enough to speak, and wise enough to listen. More than anything, Horizon is where the art of reason meets the heart of expression — a sanctuary where every perspective matters, and every voice is heard.
+            </p>
+          </div>
+
+          <div class="content-right">
+            <div class="image-container">
+              <img src="tech_talk_images/grouppic.jpg" class="section-image" alt="Horizon Group Photo">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Family Section -->
+      <section class="statistics-section" id="family">
+        <div class="container">
+          <h2 class="section-title">HORIZON FAMILY</h2>
+
+          <!-- Mentor Testimonial -->
+          <div class="testimonial-outer">
+            <div class="wide-testimonial-card dark-theme" id="faculty_card">
+              <div class="wide-content">
+                <h3>Dr Kaushal Sharma</h3>
+                <p class="designation">Faculty Mentor, Horizon</p>
+                <p class="description">
+                  A guiding force behind Horizon, Dr. Kaushal Sharma brings unwavering support, insightful mentorship, and a wealth of experience to the team. With her dynamic presence and approachable nature, she plays a pivotal role in nurturing creativity, discipline, and collaboration among students. Her dedication to fostering a vibrant, learning-driven environment truly embodies the spirit of Horizon.
+                </p>
+              </div>
+              <div class="wide-image">
+                <img src="horizon_family_images/kaushal_mam.jpg" alt="Dr. Kaushal Sharma">
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Tabs Section -->
+          <div class="card">
+            <div class="tabs">
+              <button class="tab-btn active" data-tab="core-team">Core</button>
+              <button class="tab-btn" data-tab="execoms">Team</button>
+            </div>
+            
+            <!-- Core Team Tab Content -->
+            <div class="tab-content active" id="core-team">
+            <div class="testimonial-container">
+              <div class="testimonial-content">
+                <h2 class="testimonial-heading">Core Team</h2>
+                <div class="testimonial-grid">
+                  <!-- President -->
+                  <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                      <img src="./horizon_family_images/tanya.png" alt="Tanya Wadhwa">
+                    </div>
+                    <div class="testimonial-details">
+                      <h3>Tanya Wadhwa</h3>
+                      <p>President</p>
+                    </div>
+                  </div>
+
+                  <!-- Vice President 1 -->
+                  <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                      <img src="./horizon_family_images/laiba.png" alt="Laiba Zeba">
+                    </div>
+                    <div class="testimonial-details">
+                      <h3>Laiba Zeba</h3>
+                      <p>Vice President</p>
+                    </div>
+                  </div>
+
+                  <!-- Vice President 2 -->
+                  <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                      <img src="./horizon_family_images/shivang.png" alt="Shivang Gambhir">
+                    </div>
+                    <div class="testimonial-details">
+                      <h3>Shivang Gambhir</h3>
+                      <p>Vice President</p>
+                    </div>
+                  </div>
+
+                  <!-- General Secretary 1 -->
+                  <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                      <img src="./horizon_family_images/shreya.png" alt="Shreya Soni">
+                    </div>
+                    <div class="testimonial-details">
+                      <h3>Shreya Soni</h3>
+                      <p>General Secretary</p>
+                    </div>
+                  </div>
+
+                  <!-- General Secretary 2 -->
+                  <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                      <img src="./horizon_family_images/jyoti.png" alt="Jyoti Tiwari">
+                    </div>
+                    <div class="testimonial-details">
+                      <h3>Jyoti Tiwari</h3>
+                      <p>General Secretary</p>
+                    </div>
+                  </div>
+
+                  <!-- Treasurer -->
+                  <div class="testimonial-card">
+                    <div class="testimonial-avatar">
+                      <img src="./horizon_family_images/abhay.png" alt="Abhay Mathur">
+                    </div>
+                    <div class="testimonial-details">
+                      <h3>Abhay Mathur</h3>
+                      <p>Treasurer</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <!-- Executive Team Tab Content -->
+          <div class="tab-content" id="execoms">
+            <div class="member-list-container">
+              <!-- Event Management & P&D -->
+              <div class="department">
+                <div class="department-header">
+                  <i data-feather="calendar" class="department-icon"></i>
+                  <h3>Event Management & P&D</h3>
+                </div>
+                <div class="department-content">
+                  <div class="team-heads">
+                    <span class="label">Heads:</span>
+                    <span class="members">
+                      <span class="special-name">Tanishq Gaur</span>
+                      <span class="special-name">Arti Joshi</span>
+                    </span>
+                  </div>
+                  <div class="team-executives">
+                    <span class="label">Executives:</span>
+                    <div class="name-grid">
+                      <span>Aditya Pandey</span>
+                      <span>Shiv Arora</span>
+                      <span>Pratyusa Kumar Rai</span>
+                      <span>Mansi Kanojia</span>
+                      <span>Nitin Sounkaria</span>
+                      <span>Nisha Kumari</span>
+                      <span>Honey Yadav</span>
+                      <span>Garima Tyagi</span>
+                      <span>Devender</span>
+                      <span>Arya Kumar Yadav</span>
+                      <span>Geetika</span>
+                      <span>Shivam Gupta</span>
+                      <span>Itika Vats</span>
+                      <span>Nehal Gupta</span>
+                      <span>Tanishq Rajput</span>
+                      <span>Ashish Sharma</span>
+                      <span>Jayesh Kumar Sinha</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- RnA & CnD -->
+              <div class="department">
+                <div class="department-header">
+                  <i data-feather="book-open" class="department-icon"></i>
+                  <h3>Research & Analysis (RnA) & Content & Design (CnD)</h3>
+                </div>
+                <div class="department-content">
+                  <div class="team-heads">
+                    <span class="label">Heads:</span>
+                    <span class="members">
+                      <span>Oorgita Sur</span>
+                      <span>Udhbhav Mathur</span>
+                    </span>
+                  </div>
+                  <div class="team-executives">
+                    <span class="label">Executives:</span>
+                    <div class="name-grid">
+                      <span>Tushar Goel</span>
+                      <span>Pavni Gupta</span>
+                      <span>Abhishek Sharma</span>
+                      <span>Rahul</span>
+                      <span>Bhumi Sharma</span>
+                      <span>Bhavya Gupta</span>
+                      <span>Samvid Chawla</span>
+                      <span>Abhishek</span>
+                      <span>Jashith Arora</span>
+                      <span>Ayush</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Social Media -->
+              <div class="department">
+                <div class="department-header">
+                  <i data-feather="share-2" class="department-icon"></i>
+                  <h3>Social Media</h3>
+                </div>
+                <div class="department-content">
+                  <div class="team-heads">
+                    <span class="label">Heads:</span>
+                    <span class="members">
+                      <span>Tishya Nangia</span>
+                      <span>Kshitij Jaiswal</span>
+                    </span>
+                  </div>
+                  <div class="team-executives">
+                    <span class="label">Executives:</span>
+                    <div class="name-grid">
+                      <span>Avika</span>
+                      <span>Ritibha</span>
+                      <span>Lalit Goswami</span>
+                      <span>Archit Jain</span>
+                      <span>Shivangi Jha</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Design -->
+              <div class="department">
+                <div class="department-header">
+                  <i data-feather="pen-tool" class="department-icon"></i>
+                  <h3>Design</h3>
+                </div>
+                <div class="department-content">
+                  <div class="team-heads">
+                    <span class="label">Heads:</span>
+                    <span class="members">
+                      <span>Chirag Gupta</span>
+                      <span>Zaynah Mahmood</span>
+                    </span>
+                  </div>
+                  <div class="team-executives">
+                    <span class="label">Executives:</span>
+                    <div class="name-grid">
+                      <span>Lipakshi Juneja</span>
+                      <span>Sidhhant Arya</span>
+                      <span>Sameer Yadav</span>
+                      <span>Ritu Gupta</span>
+                      <span>Preeti Pandey</span>
+                      <span>Prakriti Maheshwari</span>
+                      <span>Chhavi Gupta</span>
+                      <span>Umang Ratra</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Video Editing -->
+              <div class="department">
+                <div class="department-header">
+                  <i data-feather="video" class="department-icon"></i>
+                  <h3>Video Editing</h3>
+                </div>
+                <div class="department-content">
+                  <div class="team-heads">
+                    <span class="label">Heads:</span>
+                    <span class="members">
+                      <span>Ashwin Kumar Singh</span>
+                      <span>Nitish Kumar Abrol</span>
+                    </span>
+                  </div>
+                  <div class="team-executives">
+                    <span class="label">Executives:</span>
+                    <div class="name-grid">
+                      <span>Abhay Kanojia</span>
+                      <span>Vikhyat Bansal</span>
+                      <span>Dhruv</span>
+                      <span>Jatin</span>
+                      <span>Saksham Chandela</span>
+                      <span>Aaryan Tyagi</span>
+                      <span>Piyush Kumar</span>
+                      <span>Dev Malik</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Sponsorship -->
+              <div class="department">
+                <div class="department-header">
+                  <i data-feather="dollar-sign" class="department-icon"></i>
+                  <h3>Sponsorship</h3>
+                </div>
+                <div class="department-content">
+                  <div class="team-heads">
+                    <span class="label">Heads:</span>
+                    <span class="members">
+                      <span>Lakshay Varshney</span>
+                      <span>Tanvi Malik</span>
+                    </span>
+                  </div>
+                  <div class="team-executives">
+                    <span class="label">Executives:</span>
+                    <div class="name-grid">
+                      <span>Deepaansh Aggarwal</span>
+                      <span>Kamlesh Patel</span>
+                      <span>Dhushyant</span>
+                      <span>Yash Nagar</span>
+                      <span>Divyanshu Chaudhary</span>
+                      <span>Shyam Agarwal</span>
+                      <span>Aman Jain</span>
+                      <span>Krishnam Bajaj</span>
+                      <span>Aman Pokhriyal</span>
+                      <span>Sumit Malik</span>
+                      <span>Rakshit Gupta</span>
+                      <span>Siddhant Patnaik</span>
+                      <span>Kashaan Ahmad</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Public Speaking -->
+              <div class="department">
+                <div class="department-header">
+                  <i data-feather="mic" class="department-icon"></i>
+                  <h3>Public Speaking</h3>
+                </div>
+                <div class="department-content">
+                  <div class="team-heads">
+                    <span class="label">Heads:</span>
+                    <span class="members">
+                      <span>Swastik Saha</span>
+                      <span>Saurabh Kumar Tiwari</span>
+                    </span>
+                  </div>
+                  <div class="team-executives">
+                    <span class="label">Executives:</span>
+                    <div class="name-grid">
+                      <span>Moksha Arora</span>
+                      <span>Dev Dogra</span>
+                      <span>Areen Kaur</span>
+                      <span>Ahaana Verma</span>
+                      <span>Anushka Sharma</span>
+                      <span>Ananya Priya</span>
+                      <span>Riya Mehndiratta</span>
+                      <span>Ishita Dabas</span>
+                      <span>Shruti</span>
+                      <span>Anushka Prakash</span>
+                      <span>Krishna Bhatia</span>
+                      <span>Aryan</span>
+                      <span>Utkarsh Chaudhary</span>
+                      <span>Ishani Bhushan</span>
+                      <span>Goms</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Publicity -->
+              <div class="department">
+                <div class="department-header">
+                  <i data-feather="megaphone" class="department-icon"></i>
+                  <h3>Publicity</h3>
+                </div>
+                <div class="department-content">
+                  <div class="team-heads">
+                    <span class="label">Heads:</span>
+                    <span class="members">
+                      <span>Ishani Bhushan</span>
+                      <span>Toshika</span>
+                    </span>
+                  </div>
+                  <div class="team-executives">
+                    <span class="label">Executives:</span>
+                    <div class="name-grid">
+                      <span>Sahil Arora</span>
+                      <span>Gautav Karakoti</span>
+                      <span>Vrinda Garg</span>
+                      <span>Shreya Sharma</span>
+                      <span>Dhruvi</span>
+                      <span>Gauri</span>
+                      <span>Ashish Hooda</span>
+                      <span>Pratham Narula</span>
+                      <span>Kartik Dhyani</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Events Section -->
+      <section id="event-section" class="Eventsection event-section section-fade-in">
+        <div class="event-container">
+          <div class="event-section-header">
+            <h2 class="event-section-title text-fade-in">OUR EVENTS</h2>
+          </div>
+
+          <div class="event-timeline">
+            <!-- Tech Talks Event -->
+            <div class="event-timeline-item card-fade-in">
+              <div class="event-timeline-marker">
+                <div class="event-timeline-dot"></div>
+              </div>
+              <div class="event-timeline-card">
+                <div class="event-timeline-badge">2025</div>
+                <h3 class="event-timeline-title">Tech Talks</h3>
+                <p class="event-timeline-description">
+                  The "Tech talk" Event happened at the BVCOE Library.
+                </p>
+                <div class="event-timeline-images-wrapper">
+                  <div class="event-timeline-images">
+                    <img src="tech_talk_images/libpic1.jpg" alt="Tech Talk 1" class="image-fade-in">
+                    <img src="tech_talk_images/libpic2.jpg" alt="Tech Talk 2" class="image-fade-in">
+                    <img src="tech_talk_images/libpic3.jpg" alt="Tech Talk 1" class="image-fade-in">
+                    <img src="tech_talk_images/libpic4.jpg" alt="Tech Talk 2" class="image-fade-in">
+                    <img src="tech_talk_images/libpic5.jpg" alt="Tech Talk 1" class="image-fade-in">
+                    <img src="tech_talk_images/grouppic.jpg" alt="Tech Talk 2" class="image-fade-in">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vimarsh Event -->
+            <div class="event-timeline-item card-fade-in">
+              <div class="event-timeline-marker">
+                <div class="event-timeline-dot"></div>
+              </div>
+              <div class="event-timeline-card">
+                <div class="event-timeline-badge">2025</div>
+                <h3 class="event-timeline-title">Vimarsh</h3>
+                <p class="event-timeline-description">
+                  Online debate conducted by horizon, on the topic: "one nation one election".
+                </p>
+                <div class="event-timeline-images-wrapper">
+                  <div class="event-timeline-images">
+                    <img src="vimarsh_images/1.jpg" alt="Vimarsh 1" class="image-fade-in">
+                    <img src="vimarsh_images/2.jpg" alt="Vimarsh 2" class="image-fade-in">
+                    <img src="vimarsh_images/3.jpg" alt="Vimarsh 1" class="image-fade-in">
+                    <img src="vimarsh_images/4.jpg" alt="Vimarsh 2" class="image-fade-in">
+                    <img src="vimarsh_images/5.jpg" alt="Vimarsh 1" class="image-fade-in">
+                    <img src="vimarsh_images/6.jpg" alt="Vimarsh 2" class="image-fade-in">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <section id="contact-section">
+        <footer class="custom-footer">
+          <div class="container">
+            <div class="footer-wrapper">
+              <div class="footer-brand">
+                <img id="horizon_logo2" src="horizon_logo2.jpg" alt="Horizon Logo">
+                <h2 class="footer-title">Horizon Society</h2>
+                <p class="footer-subtitle">Igniting Innovation. Inspiring Change.</p>
+              </div>
+        
+              <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i data-feather="mail" class="footer-small-icon"></i> drkaushal25@gmail.com</p>
+                <p><i data-feather="instagram" class="footer-small-icon"></i> 
+                  <a href="https://www.instagram.com/horizonbvp/?hl=en" target="_blank">@horizonbvp</a>
+                </p>
+                <p><i data-feather="instagram" class="footer-small-icon"></i> 
+                  <a href="https://www.instagram.com/bvcoe_mun?igsh=MXhkaDRmNmg3ZnZkcA==" target="_blank">@bvcoe_mun</a>
+                </p>
+                <p><i data-feather="linkedin" class="footer-small-icon"></i> 
+                  <a href="https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Aorganization%3A88400039&keywords=HORIZON_BVP&origin=ENTITY_SEARCH_HOME_HISTORY&sid=A51" target="_blank">linkedin.com/company/horizonbvcoe</a>
+                </p>
+              </div>
+            </div>
+        
+            <div class="footer-bottom">
+              <p>&copy; 2025 Horizon BVCOE. All rights reserved.</p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </section>
+
+  <!-- JavaScript Files -->
+  <script src="navigation.js"></script>
+  <script src="animations.js"></script>
+  <script src="tabs.js"></script>
+  <script src="landingpage.js"></script>
+  <script src="scroll-animations.js"></script>
+
+  <script>
+    feather.replace();
+  </script>
+</body>
+</html>

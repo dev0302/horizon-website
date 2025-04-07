@@ -1,0 +1,242 @@
+/* ---------------------------------------- */
+/* logo */
+/* Base styles */
+:root {
+  --primary-color: #38bdf8;         /* Sky blue */
+  --accent-color: #0ea5e9;          /* Lighter sky */
+  --text-color: #f8fafc;            /* Almost white */
+  --link-color: #93c5fd;
+  --background-color: #0f172a;      /* Deep slate blue */
+  --light-gray: #1e293b;            /* Dark card bg */
+  --gray: #94a3b8;
+  --dark-gray: #cbd5e1;
+  --hover-glow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+/* Logo container */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Logo styling */
+  .society-logo {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: rotate 20s linear infinite;
+  }
+  
+  /* Glowing effect */
+  .logo-glow {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(59, 130, 246, 0.2); /* Primary color with opacity */
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: pulse 2s infinite alternate;
+  }
+  
+  /* Logo background */
+  .logo-background {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.167);
+    backdrop-filter: blur(4px);
+    padding: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;   /* Optional: control outer container size */
+    height: 150px;
+  }
+  
+  /* Sparkles icon */
+  .sparkles-icon {
+    width: 140px;        /* Increase image size */
+    height: 140px;
+    object-fit: cover;  /* Ensures the image fills the area */
+    border-radius: 50%; /* Optional: makes the image itself circular */
+  }
+  
+  
+  /* Animations */
+  @keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+        opacity: 0.6;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+  }
+  
+  /* Optional: Add hover effect */
+  .logo:hover {
+    animation-play-state: paused;
+  }
+  
+  .logo:hover .sparkles-icon {
+    color: #2563eb; /* Darker primary color on hover */
+  }
+  
+  /* ------------------------------- */
+
+  .hero-title {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-top: 2rem;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, var(--blue-400), #5a3fab);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  letter-spacing: 0.4rem;
+  opacity: 0;
+  animation: slideFromBottom 1s ease-out forwards;
+  }
+  
+  .hero-subtitle {
+    color: var(--text-gray-300);
+    max-width: 36rem;
+    margin: 0 auto 2rem;
+    position: relative;
+    font-size: 1.3rem;
+    opacity: 0;
+    animation: slideFromBottom 1.2s ease-out forwards;
+    animation-delay: 0.4s;
+  }
+  
+  
+
+
+  @keyframes slideFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Animated background styles */
+.background-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .svg-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .svg-path {
+    fill: none;
+    stroke-width: 1;
+  }
+  
+  .path-cyan {
+    stroke: url(#grad1);
+    opacity: 0;
+  }
+  
+  .path-violet {
+    stroke: url(#grad2);
+    opacity: 0;
+  }
+  
+  .lines-container {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .animated-line {
+    position: absolute;
+    right: 0;
+    height: 1px;
+    width: 100%;
+    opacity: 0;
+  }
+  
+  .line-cyan {
+    background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.6), transparent);
+  }
+  
+  .line-violet {
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.6), transparent);
+  }
+  
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0;
+  }
+  
+  .orb-cyan {
+    height: 24rem;
+    width: 24rem;
+    top: 25%;
+    left: -25%;
+    background-color: rgba(34, 211, 238, 0.3);
+  }
+  
+  .orb-violet {
+    height: 24rem;
+    width: 24rem;
+    top: 50%;
+    right: -25%;
+    background-color: rgba(139, 92, 246, 0.3);
+  }
+  
+  .hero-section {
+    position: relative;
+    min-height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 10;
+    padding: 2rem;
+  }
+  
+  
+  

@@ -1,0 +1,507 @@
+:root {
+  --color-background: #0f172a;
+  --color-foreground: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-border: #1e293b;
+  --color-card: #1e293b;
+  --color-secondary: #818cf8;
+  --gradient: linear-gradient(to right, #14b8a6, #6366f1);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --radius-lg: 0.8rem;
+  --radius-full: 9999px;
+}
+
+#event-section {
+  padding-bottom: 3rem;
+  background-color: #00223a;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Event section main title */
+.event-section-title {
+  margin-top: 4rem;
+  text-align: center;
+  padding-top: 3rem;
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 4rem;
+  /* background: linear-gradient(to right, var(--blue-400), #a78bfa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent; */
+  color: white;
+  position: relative;
+  z-index: 10;
+  letter-spacing: 0.4rem;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Event Section */
+.event-timeline {
+  position: relative;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding-left: 2.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.event-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1.5rem;
+  width: 3px;
+  background: linear-gradient(to bottom, 
+      transparent,
+      #38bdf8,
+      #0ea5e9,
+      #38bdf8,
+      transparent
+  );
+  background-size: 100% 200%;
+  animation: flowLine 4s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes flowLine {
+  0% {
+      background-position: 0% 0%;
+  }
+  100% {
+      background-position: 0% 200%;
+  }
+}
+
+.event-timeline-item {
+  position: relative;
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  opacity: 1;
+  transform: none;
+}
+
+.event-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.event-timeline-marker {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.event-timeline-dot {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: var(--radius-full);
+  background: var(--gradient);
+  border: 2px solid white;
+}
+
+.event-timeline-card {
+  flex: 1;
+  background-color: #0f172a; 
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.event-timeline-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--color-secondary);
+  border-radius: var(--radius-full);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.event-timeline-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.event-timeline-institution,
+.event-timeline-description {
+  color: var(--color-muted);
+}
+
+/* Image Gallery */
+.event-timeline-images-wrapper {
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1.5px rgba(255, 255, 255, 0.084) solid;
+  background-color: #0f172a; 
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+/* Grid layout for images */
+.event-timeline-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.event-timeline-images img {
+  width: 160px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive grid adjustment */
+@media (max-width: 1024px) {
+  .event-timeline-images {
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+      gap: 0.75rem;
+  }
+  
+  .event-timeline-images img {
+      height: 160px;
+  }
+}
+
+@media (max-width: 640px) {
+  .event-timeline-images {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+  }
+  
+  .event-timeline-images img {
+      height: 140px;
+  }
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  .event-timeline {
+      padding-left: 4rem;
+  }
+
+  .event-timeline::before {
+      left: 2rem;
+  }
+}
+
+/* ========== IMAGE GALLERY BELOW TIMELINE ========== */
+
+/* Grid layout for images */
+.event-timeline-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.event-timeline-images img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: transform;
+  animation: floatUpDown 3s ease-in-out infinite;
+  animation-play-state: running;
+  filter: brightness(0.9);
+  position: relative;
+  z-index: 1;
+}
+
+/* When hovering over an image, darken others */
+.event-timeline-images img:hover {
+  filter: brightness(1.2);
+  transform: scale(1.05);
+  z-index: 2;
+  outline:  solid 2px rgba(255, 255, 255, 0.281) ;
+}
+
+@keyframes floatUpDown {
+  0% {
+      transform: translateY(0px) scale(0.95);
+  }
+  50% {
+      transform: translateY(-10px) scale(0.95);
+  }
+  100% {
+      transform: translateY(0px) scale(0.95);
+  }
+}
+
+/* Stagger the animations for each image */
+.event-timeline-images img:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.event-timeline-images img:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.event-timeline-images img:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.event-timeline-images img:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.event-timeline-images img:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.event-timeline-images img:nth-child(6) {
+  animation-delay: 1s;
+}
+
+/* Performance optimizations */
+.event-timeline-images img {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.event-timeline-images img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(20, 184, 166, 0.2), rgba(99, 102, 241, 0.2));
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Responsive grid adjustment with optimized performance */
+@media (max-width: 1024px) {
+  .event-timeline-images {
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+      gap: 1rem;
+  }
+  
+  .event-timeline-images img {
+      height: 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  .event-timeline-images {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+  }
+  
+  .event-timeline-images img {
+      height: 180px;
+  }
+}
+
+/* ========== RESPONSIVE MEDIA QUERIES ========== */
+
+/* Large Desktop Screens */
+@media (min-width: 1440px) {
+  .event-timeline-images-wrapper {
+    max-width: 1400px;
+    padding: 2.5rem;
+  }
+  
+  .event-timeline-images {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+  
+  .event-section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Landscape Tablets and Small Desktops */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .event-timeline-images-wrapper {
+    max-width: 1100px;
+    padding: 2.25rem;
+  }
+  
+  .event-timeline-images {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+  }
+  
+  .event-section-title {
+    font-size: 2.5rem;
+  }
+}
+
+/* Portrait Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .event-timeline-images-wrapper {
+    max-width: 90%;
+    padding: 2rem;
+  }
+  
+  .event-timeline-images {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+  
+  .event-section-title {
+    font-size: 2.75rem;
+  }
+  
+  .event-timeline {
+    max-width: 90%;
+  }
+}
+
+/* Large Mobile Devices */
+@media (min-width: 481px) and (max-width: 767px) {
+  .event-timeline-images-wrapper {
+    max-width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .event-timeline-images {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .event-section-title {
+    font-size: 2.25rem;
+    padding-top: 3rem;
+    letter-spacing: 0.3rem;
+  }
+  
+  .event-timeline-images img {
+    height: 200px;
+  }
+  
+  .event-timeline {
+    max-width: 95%;
+    padding-left: 1.5rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .event-timeline-images-wrapper {
+    max-width: 100%;
+    padding: 1rem;
+    margin-top: 3rem;
+  }
+  
+  .event-timeline-images {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .event-section-title {
+    font-size: 1.75rem;
+    padding-top: 2.5rem;
+    letter-spacing: 0.2rem;
+  }
+  
+  .event-timeline-images img {
+    height: 180px;
+  }
+  
+  .event-timeline {
+    max-width: 100%;
+    padding-left: 1.25rem;
+  }
+  
+  #event-section {
+    padding-bottom: 3rem;
+  }
+}
+
+/* Portrait Orientation Specific */
+@media (orientation: portrait) {
+  .event-timeline-images-wrapper {
+    padding: 1.5rem 1rem;
+  }
+  
+  .event-timeline-images {
+    gap: 1.25rem;
+  }
+  
+  .event-timeline {
+    max-width: 95%;
+  }
+}
+
+/* Landscape Orientation Specific */
+@media (orientation: landscape) {
+  .event-timeline-images-wrapper {
+    padding: 2rem;
+  }
+  
+  .event-timeline-images {
+    gap: 2rem;
+  }
+  
+  .event-timeline {
+    max-width: 90%;
+  }
+}
+
+/* High DPI Screens with optimized performance */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .event-timeline-images img {
+      box-shadow: 0 4px 20px rgba(20, 184, 166, 0.2);
+      filter: brightness(0.9) contrast(1.05) saturate(1.05);
+  }
+}
+
+/* Dark Mode Support with optimized performance */
+@media (prefers-color-scheme: dark) {
+  .event-timeline-images-wrapper::before {
+    opacity: 0.1;
+  }
+  
+  .event-timeline-images img {
+      filter: brightness(0.9) contrast(1.05) saturate(1.05);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .event-timeline-images img {
+    animation: none;
+  }
+  
+  .event-section-title {
+    animation: none;
+  }
+}
