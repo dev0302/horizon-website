@@ -9,17 +9,25 @@
   /* Main Container */
   .event-calendar-container {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #0f172a;
+    background: url(https://i.pinimg.com/originals/44/6e/3b/446e3b79395a287ca32f7977dd83b290.jpg);
+    background-size: cover;
     min-height: 100vh;
     display: flex;
-    gap: 6rem;
-    align-items: center;
     flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
+    gap: 4rem;
+    align-items: center;
     padding: 20px 100px;
+    padding-bottom: 8rem;
     position: relative;
-    padding-bottom: 4rem;
+    overflow: hidden;
+  }
+  .calendar_mini_wrapper{
+
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    height: 100%;
+    width: 100%;
   }
   
   .event-calendar-title{
@@ -67,6 +75,14 @@
     transform: translateY(0);
   }
   
+  /* Calendar and Event Panel Container */
+  .calendar-event-wrapper {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    align-items: flex-start;
+  }
+  
   /* Calendar Container */
   .calendar-container {
     width: 50%;
@@ -110,6 +126,8 @@
     padding: 8px 16px;
     border-radius: 12px;
     transition: all 0.3s ease;
+    background-color: #3341557b;
+    
   }
   
   .calendar__month-year:hover {
@@ -272,7 +290,7 @@
     flex-direction: column;
   }
   
-  .event-details {
+  .event-details_calendar {
     background-color: #1e293b;
     border-radius: 20px;
     padding: 30px;
@@ -286,7 +304,7 @@
     border: 1px solid #334155;
   }
   
-  .event-details::before {
+  .event-details_calendar::before {
     content: "";
     position: absolute;
     top: 0;
@@ -296,14 +314,14 @@
     background: linear-gradient(90deg, #3b82f6, #ec4899);
   }
   
-  .event-details__title {
+  .event-details_calendar {
     font-size: 1.8rem;
     font-weight: 600;
     color: #f8fafc;
     margin: 0 0 15px 0;
   }
   
-  .event-details__date {
+  .event-details_calendar {
     color: #3b82f6;
     margin-bottom: 20px;
     font-weight: 500;
@@ -312,7 +330,7 @@
     font-size: 1.1rem;
   }
   
-  .event-details__date::before {
+  .event-details_calendar {
     content: "📅";
     margin-right: 10px;
   }
@@ -488,6 +506,153 @@
     to { opacity: 1; }
   }
   
+  /* Firefly Styles - Scoped to event calendar section */
+  .event-calendar-container .fireflies {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .event-calendar-container .firefly {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.4vw;
+    height: 0.4vw;
+    margin: -0.2vw 0 0 9.8vw;
+    animation: ease 200s alternate infinite;
+    pointer-events: none;
+  }
+
+  .event-calendar-container .firefly::before,
+  .event-calendar-container .firefly::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform-origin: -10vw;
+  }
+
+  .event-calendar-container .firefly::before {
+    background: black;
+    opacity: 0.4;
+    animation: drift ease alternate infinite;
+  }
+
+  .event-calendar-container .firefly::after {
+    background: white;
+    opacity: 0;
+    box-shadow: 0 0 0vw 0vw yellow;
+    animation: drift ease alternate infinite, flash ease infinite;
+  }
+
+  /* Firefly Animations */
+  @keyframes drift {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes flash {
+    0%, 30%, 100% {
+      opacity: 0;
+      box-shadow: 0 0 0vw 0vw yellow;
+    }
+    5% {
+      opacity: 1;
+      box-shadow: 0 0 2vw 0.4vw yellow;
+    }
+  }
+
+  /* Individual Firefly Movements */
+  .event-calendar-container .firefly:nth-child(1) { animation-name: move1; }
+  .event-calendar-container .firefly:nth-child(1)::before { animation-duration: 10s; }
+  .event-calendar-container .firefly:nth-child(1)::after { animation-duration: 10s, 8000ms; animation-delay: 0ms, 1000ms; }
+
+  .event-calendar-container .firefly:nth-child(2) { animation-name: move2; }
+  .event-calendar-container .firefly:nth-child(2)::before { animation-duration: 15s; }
+  .event-calendar-container .firefly:nth-child(2)::after { animation-duration: 15s, 9000ms; animation-delay: 0ms, 2000ms; }
+
+  .event-calendar-container .firefly:nth-child(3) { animation-name: move3; }
+  .event-calendar-container .firefly:nth-child(3)::before { animation-duration: 12s; }
+  .event-calendar-container .firefly:nth-child(3)::after { animation-duration: 12s, 7000ms; animation-delay: 0ms, 1500ms; }
+
+  .event-calendar-container .firefly:nth-child(4) { animation-name: move4; }
+  .event-calendar-container .firefly:nth-child(4)::before { animation-duration: 18s; }
+  .event-calendar-container .firefly:nth-child(4)::after { animation-duration: 18s, 10000ms; animation-delay: 0ms, 2500ms; }
+
+  .event-calendar-container .firefly:nth-child(5) { animation-name: move5; }
+  .event-calendar-container .firefly:nth-child(5)::before { animation-duration: 14s; }
+  .event-calendar-container .firefly:nth-child(5)::after { animation-duration: 14s, 8500ms; animation-delay: 0ms, 1800ms; }
+
+  .event-calendar-container .firefly:nth-child(6) { animation-name: move6; }
+  .event-calendar-container .firefly:nth-child(6)::before { animation-duration: 16s; }
+  .event-calendar-container .firefly:nth-child(6)::after { animation-duration: 16s, 9500ms; animation-delay: 0ms, 2200ms; }
+
+  .event-calendar-container .firefly:nth-child(7) { animation-name: move7; }
+  .event-calendar-container .firefly:nth-child(7)::before { animation-duration: 13s; }
+  .event-calendar-container .firefly:nth-child(7)::after { animation-duration: 13s, 7500ms; animation-delay: 0ms, 1200ms; }
+
+  .event-calendar-container .firefly:nth-child(8) { animation-name: move8; }
+  .event-calendar-container .firefly:nth-child(8)::before { animation-duration: 17s; }
+  .event-calendar-container .firefly:nth-child(8)::after { animation-duration: 17s, 9200ms; animation-delay: 0ms, 2100ms; }
+
+  .event-calendar-container .firefly:nth-child(9) { animation-name: move9; }
+  .event-calendar-container .firefly:nth-child(9)::before { animation-duration: 11s; }
+  .event-calendar-container .firefly:nth-child(9)::after { animation-duration: 11s, 6500ms; animation-delay: 0ms, 900ms; }
+
+  .event-calendar-container .firefly:nth-child(10) { animation-name: move10; }
+  .event-calendar-container .firefly:nth-child(10)::before { animation-duration: 19s; }
+  .event-calendar-container .firefly:nth-child(10)::after { animation-duration: 19s, 11000ms; animation-delay: 0ms, 2800ms; }
+
+  .event-calendar-container .firefly:nth-child(11) { animation-name: move11; }
+  .event-calendar-container .firefly:nth-child(11)::before { animation-duration: 14s; }
+  .event-calendar-container .firefly:nth-child(11)::after { animation-duration: 14s, 8200ms; animation-delay: 0ms, 1600ms; }
+
+  .event-calendar-container .firefly:nth-child(12) { animation-name: move12; }
+  .event-calendar-container .firefly:nth-child(12)::before { animation-duration: 16s; }
+  .event-calendar-container .firefly:nth-child(12)::after { animation-duration: 16s, 8800ms; animation-delay: 0ms, 1900ms; }
+
+  .event-calendar-container .firefly:nth-child(13) { animation-name: move13; }
+  .event-calendar-container .firefly:nth-child(13)::before { animation-duration: 15s; }
+  .event-calendar-container .firefly:nth-child(13)::after { animation-duration: 15s, 8700ms; animation-delay: 0ms, 1700ms; }
+
+  .event-calendar-container .firefly:nth-child(14) { animation-name: move14; }
+  .event-calendar-container .firefly:nth-child(14)::before { animation-duration: 13s; }
+  .event-calendar-container .firefly:nth-child(14)::after { animation-duration: 13s, 7800ms; animation-delay: 0ms, 1300ms; }
+
+  .event-calendar-container .firefly:nth-child(15) { animation-name: move15; }
+  .event-calendar-container .firefly:nth-child(15)::before { animation-duration: 17s; }
+  .event-calendar-container .firefly:nth-child(15)::after { animation-duration: 17s, 9300ms; animation-delay: 0ms, 2300ms; }
+
+  /* Movement Keyframes */
+  @keyframes move1 { 0% { transform: translateX(-25vw) translateY(-35vh) scale(0.6); } 100% { transform: translateX(35vw) translateY(25vh) scale(0.8); } }
+  @keyframes move2 { 0% { transform: translateX(-35vw) translateY(25vh) scale(0.7); } 100% { transform: translateX(25vw) translateY(-35vh) scale(0.9); } }
+  @keyframes move3 { 0% { transform: translateX(25vw) translateY(-25vh) scale(0.5); } 100% { transform: translateX(-35vw) translateY(35vh) scale(0.7); } }
+  @keyframes move4 { 0% { transform: translateX(-30vw) translateY(-30vh) scale(0.8); } 100% { transform: translateX(30vw) translateY(30vh) scale(0.6); } }
+  @keyframes move5 { 0% { transform: translateX(35vw) translateY(-35vh) scale(0.7); } 100% { transform: translateX(-25vw) translateY(25vh) scale(0.9); } }
+  @keyframes move6 { 0% { transform: translateX(-20vw) translateY(35vh) scale(0.6); } 100% { transform: translateX(35vw) translateY(-20vh) scale(0.8); } }
+  @keyframes move7 { 0% { transform: translateX(30vw) translateY(30vh) scale(0.7); } 100% { transform: translateX(-30vw) translateY(-30vh) scale(0.5); } }
+  @keyframes move8 { 0% { transform: translateX(-35vw) translateY(-20vh) scale(0.8); } 100% { transform: translateX(20vw) translateY(35vh) scale(0.6); } }
+  @keyframes move9 { 0% { transform: translateX(25vw) translateY(-35vh) scale(0.7); } 100% { transform: translateX(-35vw) translateY(25vh) scale(0.9); } }
+  @keyframes move10 { 0% { transform: translateX(-30vw) translateY(30vh) scale(0.6); } 100% { transform: translateX(30vw) translateY(-30vh) scale(0.8); } }
+  @keyframes move11 { 0% { transform: translateX(35vw) translateY(-25vh) scale(0.7); } 100% { transform: translateX(-25vw) translateY(35vh) scale(0.5); } }
+  @keyframes move12 { 0% { transform: translateX(-25vw) translateY(-35vh) scale(0.8); } 100% { transform: translateX(35vw) translateY(25vh) scale(0.6); } }
+  @keyframes move13 { 0% { transform: translateX(30vw) translateY(30vh) scale(0.7); } 100% { transform: translateX(-30vw) translateY(-30vh) scale(0.9); } }
+  @keyframes move14 { 0% { transform: translateX(-35vw) translateY(25vh) scale(0.6); } 100% { transform: translateX(25vw) translateY(-35vh) scale(0.8); } }
+  @keyframes move15 { 0% { transform: translateX(25vw) translateY(-30vh) scale(0.7); } 100% { transform: translateX(-30vw) translateY(25vh) scale(0.5); } }
+
+  /* Ensure content stays above fireflies */
+  .event-calendar-title,
+  .calendar_mini_wrapper {
+    position: relative;
+    z-index: 2;
+  }
+  
   /* Responsive Styles */
   @media (max-width: 1024px) {
     .event-calendar-container {
@@ -512,7 +677,7 @@
       display: none;
     }
   
-    .event-details {
+    .event-details_calendar {
       margin-top: 0;
     }
   
@@ -536,8 +701,13 @@
   
   @media (max-width: 480px) {
     .calendar {
-      --side-padding: 15px;
+      --side-padding: 10px;
       --border-radius: 16px;
+    }
+    .event-calendar-title{
+      margin-top: 2.5rem;
+      font-size: 1.5rem;
+      letter-spacing: 0.25rem;
     }
     
     .calendar__date {

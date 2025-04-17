@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="aboutus.css">
   <link rel="stylesheet" href="animations.css">
   <link rel="stylesheet" href="upcomingevent.css">
-  <link rel="stylesheet" href="Event_Calendar/event_calendar.css">
+  <link rel="stylesheet" href="/Event_Calendar/event_calendar.css">
   
   <!-- External Libraries -->
   <!-- Feather Icons -->
@@ -728,17 +728,28 @@
 
 
     <!-- Event-Calendar Section -->
-      <div class="event-calendar-container">
-        <h2 data-aos="fade-up" class="event-calendar-title">Event Calendar</h2>
+    <div class="event-calendar-container" data-aos="flip-up">
+      <div class="fireflies">
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+        <div class="firefly"></div>
+      </div>
 
+      <h2 data-aos="fade-up" class="event-calendar-title">Event Calendar</h2>
 
-        <!-- Add Event Button -->
-      <!-- <button class="add-event-btn" id="addEventBtn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 5v14M5 12h14"></path>
-        </svg>
-        Add Event
-      </button> -->
+      <div class="calendar_mini_wrapper">
         <!-- Calendar Section -->
         <div class="calendar-container">
           <div class="calendar" data-aos="fade-up">
@@ -779,7 +790,7 @@
 
         <!-- Event Panel (Desktop) -->
         <div class="event-panel" data-aos="fade-up">
-          <div class="event-details" id="eventDetails">
+          <div class="event-details_calendar" id="eventDetails">
             <div class="event-details__placeholder" id="eventPlaceholder">
               <div class="event-details__placeholder-icon">📅</div>
               <div class="event-details__placeholder-text">Select a date with an event to view details</div>
@@ -801,139 +812,145 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Event Form Modal -->
-      <div class="event-form-modal" id="eventFormModal">
-        <div class="event-form-container">
-          <div class="event-form-header">
-            <h3 class="event-form-title">Add New Event</h3>
-            <button class="close-form-btn" id="closeFormBtn">&times;</button>
-          </div>
-          <form id="eventForm">
-            <div class="form-group">
-              <label for="newEventDate" class="form-label">Date</label>
-              <input type="date" id="newEventDate" class="form-input" required>
+        <!-- Event Form Modal -->
+        <div class="event-form-modal" id="eventFormModal">
+          <div class="event-form-container">
+            <div class="event-form-header">
+              <h3 class="event-form-title">Add New Event</h3>
+              <button class="close-form-btn" id="closeFormBtn">&times;</button>
             </div>
-            <div class="form-group">
-              <label for="newEventTime" class="form-label">Time</label>
-              <input type="time" id="newEventTime" class="form-input" required>
-            </div>
-            <div class="form-group">
-              <label for="newEventTitle" class="form-label">Event Title</label>
-              <input type="text" id="newEventTitle" class="form-input" placeholder="Enter event title" required>
-            </div>
-            <div class="form-group">
-              <label for="newEventDescription" class="form-label">Description</label>
-              <textarea id="newEventDescription" class="form-input form-textarea" placeholder="Enter event description"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="newEventLocation" class="form-label">Location</label>
-              <input type="text" id="newEventLocation" class="form-input" placeholder="Enter location">
-            </div>
-            <button type="submit" class="form-submit-btn">Add Event</button>
-          </form>
-        </div>
-      </div>
-
-      <!-- Mobile Event Modal -->
-      <div class="event-modal" id="eventModal" style="display: none;">
-        <div class="event-details" id="mobileEventDetails">
-          <!-- Content will be inserted dynamically -->
-        </div>
-      </div>
-
-      <!-- Footer Section -->
-      <section id="contact-section">
-        <footer class="custom-footer">
-          <div class="container">
-            <div class="footer-wrapper">
-              <div class="footer-brand">
-                <img id="horizon_logo2" src="horizon_logo2.jpg" alt="Horizon Logo">
-                <h2 class="footer-title">Horizon Society</h2>
-                <p class="footer-subtitle">Igniting Innovation. Inspiring Change.</p>
+            <form id="eventForm">
+              <div class="form-group">
+                <label for="newEventDate" class="form-label">Date</label>
+                <input type="date" id="newEventDate" class="form-input" required>
               </div>
-        
-              <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <p><i data-feather="mail" class="footer-small-icon"></i> drkaushal25@gmail.com</p>
-              <p><i data-feather="instagram" class="footer-small-icon"></i> 
-                <a href="https://www.instagram.com/horizonbvp/?hl=en" target="_blank">@horizonbvp</a>
-              </p>
-              <p><i data-feather="instagram" class="footer-small-icon"></i> 
-                <a href="https://www.instagram.com/bvcoe_mun?igsh=MXhkaDRmNmg3ZnZkcA==" target="_blank">@bvcoe_mun</a>
-              </p>
-              <p><i data-feather="linkedin" class="footer-small-icon"></i> 
-                <a href="https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Aorganization%3A88400039&keywords=HORIZON_BVP&origin=ENTITY_SEARCH_HOME_HISTORY&sid=A51" target="_blank">linkedin.com/company/horizonbvcoe</a>
-              </p>
+              <div class="form-group">
+                <label for="newEventTime" class="form-label">Time</label>
+                <input type="time" id="newEventTime" class="form-input" required>
               </div>
-            </div>
-        
-            <div class="footer-bottom">
-              <p>&copy; 2025 Horizon BVCOE. All rights reserved.</p>
-            <p class="developer-credit">Developed by - <a href="https://www.linkedin.com/in/dev-malik-976230311/" target="_blank">Dev</a></p>
-            </div>
+              <div class="form-group">
+                <label for="newEventTitle" class="form-label">Event Title</label>
+                <input type="text" id="newEventTitle" class="form-input" placeholder="Enter event title" required>
+              </div>
+              <div class="form-group">
+                <label for="newEventDescription" class="form-label">Description</label>
+                <textarea id="newEventDescription" class="form-input form-textarea" placeholder="Enter event description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="newEventLocation" class="form-label">Location</label>
+                <input type="text" id="newEventLocation" class="form-input" placeholder="Enter location">
+              </div>
+              <button type="submit" class="form-submit-btn">Add Event</button>
+            </form>
           </div>
-        </footer>
-      </main>
+        </div>
+
+        <!-- Mobile Event Modal -->
+        <div class="event-modal" id="eventModal" style="display: none;">
+          <div class="event-details" id="mobileEventDetails">
+            <!-- Content will be inserted dynamically -->
+          </div>
+        </div>
+        
+      </div>
     </div>
 
-  <!-- JavaScript Files -->
-  <script src="navigation.js"></script>
-  <script src="animations.js"></script>
-  <script src="tabs.js"></script>
-  <script src="typing.js"></script>
-  <script src="text-effects.js"></script>
-  <script src="landingpage.js"></script>
-  <script src="scroll-animations.js"></script>
-  <script src="scroll-animation.js"></script>
-  <script src="Event_Calendar/event_calendar.js"></script>
+      
 
-  <script>
-    feather.replace();
-  </script>
+    <!-- Footer Section -->
+    <section id="contact-section">
+      <footer class="custom-footer">
+        <div class="container">
+          <div class="footer-wrapper">
+            <div class="footer-brand">
+              <img id="horizon_logo2" src="horizon_logo2.jpg" alt="Horizon Logo">
+              <h2 class="footer-title">Horizon Society</h2>
+              <p class="footer-subtitle">Igniting Innovation. Inspiring Change.</p>
+            </div>
+      
+            <div class="footer-contact">
+              <h3>Contact Us</h3>
+              <p><i data-feather="mail" class="footer-small-icon"></i> drkaushal25@gmail.com</p>
+            <p><i data-feather="instagram" class="footer-small-icon"></i> 
+              <a href="https://www.instagram.com/horizonbvp/?hl=en" target="_blank">@horizonbvp</a>
+            </p>
+            <p><i data-feather="instagram" class="footer-small-icon"></i> 
+              <a href="https://www.instagram.com/bvcoe_mun?igsh=MXhkaDRmNmg3ZnZkcA==" target="_blank">@bvcoe_mun</a>
+            </p>
+            <p><i data-feather="linkedin" class="footer-small-icon"></i> 
+              <a href="https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Aorganization%3A88400039&keywords=HORIZON_BVP&origin=ENTITY_SEARCH_HOME_HISTORY&sid=A51" target="_blank">linkedin.com/company/horizonbvcoe</a>
+            </p>
+            </div>
+          </div>
+      
+          <div class="footer-bottom">
+            <p>&copy; 2025 Horizon BVCOE. All rights reserved.</p>
+          <p class="developer-credit">Developed by - <a href="https://www.linkedin.com/in/dev-malik-976230311/" target="_blank">Dev</a></p>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
 
-  <!-- AOS LIBRARY -->
-  <script>
-    // Initialize AOS (Animate On Scroll)
-    document.addEventListener('DOMContentLoaded', function() {
-        AOS.init({
-            duration: 800,        // Restored original duration
-            once: true,           // Whether animation should happen only once
-            offset: 50,           // Reduced from 120 to 50 to trigger animations earlier
-            easing: 'ease-in-out' // Restored original easing
-        });
-
-        // Add specific settings for about us section
-        const aboutElements = document.querySelectorAll('#about-us [data-aos]');
-        aboutElements.forEach(element => {
-            element.setAttribute('data-aos-offset', '30');  // Even earlier trigger for about section
-        });
-    });
-  </script>
   
-  <!-- script for event-calendar section -->
-   <!-- Firebase Compat SDKs for Browser -->
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
 
-  <!-- Firebase Init -->
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyCMKsgsvp6gNyLOaOdbWcGltuFIcP_EAtw",
-      authDomain: "eventcalendar-eeaa6.firebaseapp.com",
-      projectId: "eventcalendar-eeaa6",
-      storageBucket: "eventcalendar-eeaa6.appspot.com",
-      messagingSenderId: "913543020019",
-      appId: "1:913543020019:web:925fe28632f4abfe5f6686",
-      measurementId: "G-JKK3CG8PW6"
-    };
+<!-- JavaScript Files -->
+<script src="navigation.js"></script>
+<script src="animations.js"></script>
+<script src="tabs.js"></script>
+<script src="typing.js"></script>
+<script src="text-effects.js"></script>
+<script src="landingpage.js"></script>
+<script src="scroll-animations.js"></script>
+<script src="scroll-animation.js"></script>
+<script src="Event_Calendar/event_calendar.js"></script>
 
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-    const db = firebase.firestore();
-  </script>
+<script>
+  feather.replace();
+</script>
+
+<!-- AOS LIBRARY -->
+<script>
+  // Initialize AOS (Animate On Scroll)
+  document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+          duration: 800,        // Restored original duration
+          once: true,           // Whether animation should happen only once
+          offset: 50,           // Reduced from 120 to 50 to trigger animations earlier
+          easing: 'ease-in-out' // Restored original easing
+      });
+
+      // Add specific settings for about us section
+      const aboutElements = document.querySelectorAll('#about-us [data-aos]');
+      aboutElements.forEach(element => {
+          element.setAttribute('data-aos-offset', '30');  // Even earlier trigger for about section
+      });
+  });
+</script>
+ 
+<!-- script for event-calendar section -->
+ <!-- Firebase Compat SDKs for Browser -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics-compat.js"></script>
+
+<!-- Firebase Init -->
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCMKsgsvp6gNyLOaOdbWcGltuFIcP_EAtw",
+    authDomain: "eventcalendar-eeaa6.firebaseapp.com",
+    projectId: "eventcalendar-eeaa6",
+    storageBucket: "eventcalendar-eeaa6.appspot.com",
+    messagingSenderId: "913543020019",
+    appId: "1:913543020019:web:925fe28632f4abfe5f6686",
+    measurementId: "G-JKK3CG8PW6"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  const db = firebase.firestore();
+</script>
 
 </body>
 </html>

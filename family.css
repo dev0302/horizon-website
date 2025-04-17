@@ -918,8 +918,8 @@
   display: inline-flex;
   align-items: center;
   padding: 12px 24px;
-  background-color: rgba(211, 207, 207, 0.5);
-  color: white;
+  background-color: rgba(37, 12, 117, 0.5);
+  color: rgba(255, 255, 255, 0.767);
   border: none;
   border-radius: 30px;
   font-size: 16px;
