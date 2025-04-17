@@ -1,0 +1,326 @@
+<style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Montserrat', serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .app {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: cornflowerblue;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .add-button {
+      background-color: #0284c7;
+      color: white;
+      border: none;
+      border-radius: 2rem;
+      padding: 0.8rem 1.2rem 0.8rem 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease-out;
+      font-size: 1.2rem;
+      box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.1), 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    }
+
+    .add-button:hover {
+      background-color: #0ea5e9;
+      transform: translateY(-0.1rem);
+      box-shadow: 0 0.3rem 0.2rem rgba(0, 0, 0, 0.1), 0 0.6rem 1rem rgba(0, 0, 0, 0.3);
+    }
+
+    .add-button:active {
+      transition: all 0.1s ease-out;
+      transform: translateY(0rem);
+    }
+
+    .add-button svg {
+      transition: transform 0.3s ease-out;
+      margin-right: 0.3rem;
+      font-size: 1.5rem;
+    }
+
+    .notifications-container {
+      --width: 20rem;
+      --height: 4.5rem;
+      --gap: 1rem;
+
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      padding: 1rem;
+      pointer-events: none;
+    }
+
+    .notification {
+      display: flex;
+      transform: translateY(var(--y)) scale(var(--scale));
+      transform-origin: center;
+      transition: all 400ms ease-in-out;
+      pointer-events: auto;
+      margin-bottom: var(--gap);
+      width: var(--width);
+    }
+
+    .notification-inner {
+      background-color: var(--bg);
+      -webkit-backdrop-filter: blur(0.5rem);
+      backdrop-filter: blur(0.5rem);
+      padding: 0 1rem;
+      border-radius: 0.5rem;
+      width: 100%;
+      height: var(--height);
+      opacity: var(--opacity);
+      transition: all 400ms ease-in-out;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .notification-inner h2 {
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .notification-inner p {
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      margin: 0;
+    }
+
+    .notification-inner .close {
+      background: none;
+      border: none;
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 0.8rem;
+      padding: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      color: #333;
+    }
+
+    .notification-inner .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.3rem;
+      margin-right: 1rem;
+      font-size: 1rem;
+      color: white;
+    }
+
+    .notification-inner .icon.error {
+      background-color: #f87171;
+    }
+
+    .notification-inner .icon.success {
+      background-color: #10b981;
+    }
+
+    .notification-inner .icon.info {
+      background-color: #60a5fa;
+    }
+
+    .notification-inner .icon.warning {
+      background-color: #f59e0b;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="notifications-container" id="notifications"></div>
+    <button class="add-button" id="addNotification">
+      <i class="fas fa-plus"></i> Add Notification
+    </button>
+  </div>
+
+  <script>
+    // Configuration
+    const TIMEOUT = 5000;
+    const MAX_NOTIFICATIONS = 5;
+    const STACKING_OVERLAP = 0.9;
+    
+    const NotificationType = {
+      SUCCESS: 'success',
+      ERROR: 'error',
+      INFO: 'info',
+      WARNING: 'warning'
+    };
+    
+    const NotificationIcons = {
+      [NotificationType.SUCCESS]: 'fa-check',
+      [NotificationType.ERROR]: 'fa-times',
+      [NotificationType.INFO]: 'fa-info',
+      [NotificationType.WARNING]: 'fa-exclamation'
+    };
+    
+    // Notification manager
+    class NotificationManager {
+      constructor() {
+        this.notifications = [];
+        this.timeouts = new Map();
+        this.container = document.getElementById('notifications');
+        this.isHovering = false;
+        
+        this.container.addEventListener('mouseenter', () => this.pauseTimeouts());
+        this.container.addEventListener('mouseleave', () => this.resumeTimeouts());
+      }
+      
+      addNotification(type, title, content) {
+        const notification = {
+          id: Date.now().toString(),
+          type,
+          title,
+          content,
+          timeout: Date.now() + TIMEOUT
+        };
+        
+        // Limit number of notifications
+        if (this.notifications.length >= MAX_NOTIFICATIONS) {
+          this.removeNotification(this.notifications[0].id);
+        }
+        
+        this.notifications.push(notification);
+        this.renderNotifications();
+        
+        // Set timeout for auto-removal
+        if (!this.isHovering) {
+          const timeoutId = setTimeout(() => {
+            this.removeNotification(notification.id);
+          }, TIMEOUT);
+          this.timeouts.set(notification.id, timeoutId);
+        }
+      }
+      
+      removeNotification(id) {
+        const index = this.notifications.findIndex(n => n.id === id);
+        if (index === -1) return;
+        
+        // Find the notification element
+        const notificationEl = this.container.querySelector(`[data-id="${id}"]`);
+        if (notificationEl) {
+          notificationEl.classList.add('exiting');
+          setTimeout(() => {
+            this.notifications.splice(index, 1);
+            this.renderNotifications();
+          }, 1000); // Match CSS transition duration
+        }
+        
+        // Clear timeout if exists
+        if (this.timeouts.has(id)) {
+          clearTimeout(this.timeouts.get(id));
+          this.timeouts.delete(id);
+        }
+      }
+      
+      pauseTimeouts() {
+        this.isHovering = true;
+        this.timeouts.forEach((timeout, id) => {
+          clearTimeout(timeout);
+          this.timeouts.delete(id);
+          
+          // Update remaining time
+          const notification = this.notifications.find(n => n.id === id);
+          if (notification) {
+            notification.timeout = Date.now() + (notification.timeout - Date.now());
+          }
+        });
+        
+        // Update all notifications to full opacity when hovering
+        this.container.querySelectorAll('.notification').forEach(el => {
+          el.style.setProperty('--opacity', '1');
+          el.style.setProperty('--scale', '1');
+          el.style.setProperty('--y', '0%');
+        });
+      }
+      
+      resumeTimeouts() {
+        this.isHovering = false;
+        this.notifications.forEach(notification => {
+          const remainingTime = notification.timeout - Date.now();
+          if (remainingTime > 0) {
+            const timeoutId = setTimeout(() => {
+              this.removeNotification(notification.id);
+            }, remainingTime);
+            this.timeouts.set(notification.id, timeoutId);
+          } else {
+            this.removeNotification(notification.id);
+          }
+        });
+        
+        // Restack notifications
+        this.renderNotifications();
+      }
+      
+      renderNotifications() {
+        // Clear container
+        this.container.innerHTML = '';
+        
+        // Render each notification with proper stacking
+        this.notifications.forEach((notification, index) => {
+          const inverseIndex = this.notifications.length - index - 1;
+          const scale = 1 - inverseIndex * 0.05;
+          const opacity = 1 - (inverseIndex / this.notifications.length) * 0.1;
+          const bg = `hsla(0, 0%, ${100 - inverseIndex * 15}%, 0.4)`;
+          const y = inverseIndex * 100 * STACKING_OVERLAP;
+          
+          const notificationEl = document.createElement('div');
+          notificationEl.className = 'notification';
+          notificationEl.dataset.id = notification.id;
+          notificationEl.style.setProperty('--bg', bg);
+          notificationEl.style.setProperty('--opacity', opacity);
+          notificationEl.style.setProperty('--scale', scale);
+          notificationEl.style.setProperty('--y', `${y}%`);
+          
+          notificationEl.innerHTML = `
+            <div class="notification-inner">
+              <div class="icon ${notification.type}">
+                <i class="fas ${NotificationIcons[notification.type]}"></i>
+              </div>
+              <div>
+                <h2>${notification.title}</h2>
+                <p>${notification.content}</p>
+              </div>
+              <button class="close" aria-label="Close">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          `;
+          
+          // Add click handler for close button
+          notificationEl.querySelector('.close').addEventListener('click', () => {
+            this.removeNotification(notification.id);
+          });
+          
+          this.container.appendChild(notificationEl);
+        });
+      }
+    }
+    
+    // Initialize
+    const notificationManager = new NotificationManager();
+    
+    // Add button click handler
+    document.getElementById('addNotification').addEventListener('click', () => {
+      const types = Object.values(NotificationType);
+      const randomType = types[Math.floor(Math.random() * types.length)];
+      const title = `${randomType.charAt(0).toUpperCase() + randomType.slice(1)} Notification`;
+      notificationManager.addNotification(randomType, title, 'This is a sample notification message');
+    });
+  </script>

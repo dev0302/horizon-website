@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Event Calendar</title>
+  <style>
+    /* Base Styles */
+    body {
+      height: 100vh;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0f172a;
+      color: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      background-color: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      gap: 6rem;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      padding: 20px 100px;
+      position: relative;
+    }
+    
+    /* Add Event Button */
+    .add-event-btn {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+    
+    .add-event-btn:hover {
+      background-color: #2563eb;
+      transform: translateY(-2px);
+    }
+    
+    .add-event-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Calendar Styles */
+    .calendar-container {
+      width: 50%;
+      padding-right: 15px;
+    }
+
+    .calendar {
+      --side-padding: 20px;
+      --border-radius: 24px;
+      --accent-br: 12px;
+      width: 100%;
+      font-size: 14px;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      background: #1e293b;
+      border: 1px solid #334155;
+    }
+
+    /* Calendar Header */
+    .calendar__header {
+      background-color: #1e293b;
+      padding: 20px var(--side-padding);
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #334155;
+    }
+
+    .calendar__month-year {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      padding: 8px 16px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .calendar__month-year:hover {
+      background-color: #334155;
+    }
+
+    .calendar__month {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #f8fafc;
+      margin-right: 8px;
+    }
+
+    .calendar__year {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #94a3b8;
+    }
+
+    .calendar__month-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #1e293b;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      width: 100%;
+      min-width: 320px;
+      z-index: 100;
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      transform-origin: top center;
+      animation: scaleIn 0.2s ease-out forwards;
+      border: 1px solid #334155;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .month-option {
+      padding: 12px;
+      text-align: center;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      color: #e2e8f0;
+      background-color: #334155;
+    }
+
+    .month-option:hover {
+      background-color: #475569;
+      transform: translateY(-2px);
+    }
+
+    .month-option.active {
+      background-color: #3b82f6;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* Calendar Body */
+    .calendar__body {
+      background-color: #1e293b;
+    }
+
+    .calendar__days {
+      background-color: #1e293b;
+      padding: 0 var(--side-padding) 10px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
+
+    .calendar__days > div {
+      text-align: center;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #94a3b8;
+      padding: 10px 0;
+    }
+
+    .calendar__dates {
+      padding: 10px var(--side-padding);
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
+
+    .calendar__date {
+      --height: calc(450px / 6 - var(--side-padding));
+      text-align: center;
+      height: var(--height);
+      line-height: var(--height);
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s ease;
+      color: #e2e8f0;
+    }
+
+    .calendar__date:hover {
+      transform: scale(1.1);
+    }
+
+    .calendar__date::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: calc(var(--height) * 0.9);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: var(--accent-br);
+      transition: all 0.3s ease;
+    }
+
+    .calendar__date:not(.calendar__date--grey):hover::before {
+      background-color: rgba(59, 130, 246, 0.1);      
+    }
+
+    .calendar__date--grey {
+      color: #475569;
+      cursor: not-allowed;
+    }
+
+    .calendar__date--has-event {
+      font-weight: 600;
+      color: #3b82f6;
+    }
+
+    .calendar__date--has-event::before {
+      background-color: rgba(59, 130, 246, 0.15);
+    }
+
+    .calendar__date--has-event:hover::before {
+      background-color: rgba(59, 130, 246, 0.25);
+    }
+
+    .calendar__date--has-event::after {
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      background-color: #3b82f6;
+      border-radius: 50%;
+    }
+
+    /* Event Panel Styles */
+    .event-panel {
+      width: 50%;
+      padding-left: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .event-details {
+      background-color: #1e293b;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      min-height: 390px;
+      border: 1px solid #334155;
+    }
+
+    .event-details::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #3b82f6, #ec4899);
+    }
+
+    .event-details__title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin: 0 0 15px 0;
+    }
+
+    .event-details__date {
+      color: #3b82f6;
+      margin-bottom: 20px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+
+    .event-details__date::before {
+      content: "📅";
+      margin-right: 10px;
+    }
+
+    .event-details__content {
+      line-height: 1.6;
+      color: #94a3b8;
+      flex: 1;
+    }
+
+    .event-details__content ul {
+      padding-left: 20px;
+      color: #e2e8f0;
+    }
+
+    .event-details__content li {
+      margin-bottom: 10px;
+    }
+
+    .event-details__placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      color: #64748b;
+      text-align: center;
+    }
+
+    .event-details__placeholder-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      opacity: 0.5;
+    }
+
+    .event-details__placeholder-text {
+      font-size: 1.2rem;
+      max-width: 300px;
+    }
+
+    /* Event Form Modal */
+    .event-form-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.95);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .event-form-container {
+      background-color: #1e293b;
+      border-radius: 16px;
+      padding: 30px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border: 1px solid #334155;
+      position: relative;
+    }
+
+    .event-form-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, #3b82f6, #ec4899);
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    .event-form-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .event-form-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #f8fafc;
+      margin: 0;
+    }
+
+    .close-form-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .close-form-btn:hover {
+      color: #e2e8f0;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      background-color: #334155;
+      border: 1px solid #475569;
+      border-radius: 8px;
+      color: #e2e8f0;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #3b82f6;
+    }
+
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-submit-btn {
+      width: 100%;
+      padding: 14px;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: 10px;
+    }
+
+    .form-submit-btn:hover {
+      background-color: #2563eb;
+    }
+
+    /* Mobile Event Modal */
+    .event-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .container {
+        gap: 3rem;
+        padding: 20px 50px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 2rem;
+      }
+
+      .calendar-container, .event-panel {
+        width: 100%;
+        padding: 0;
+      }
+
+      .event-panel {
+        display: none;
+      }
+
+      .event-details {
+        margin-top: 0;
+      }
+
+      .event-modal {
+        display: flex;
+      }
+      
+      .add-event-btn {
+        top: 20px;
+        right: 20px;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .event-modal {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calendar {
+        --side-padding: 15px;
+        --border-radius: 16px;
+      }
+      
+      .calendar__date {
+        --height: calc(300px / 6 - var(--side-padding));
+      }
+      
+      .calendar__month-dropdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .container {
+        padding: 15px;
+      }
+      
+      .event-form-container {
+        padding: 20px;
+        margin: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="add-event-btn" id="addEventBtn">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M5 12h14"></path>
+    </svg>
+    Add Event
+  </button>
+
+  <div class="container">
+    <div class="calendar-container">
+      <div class="calendar">
+        <div class="calendar__header">
+          <div class="calendar__month-year" id="monthYearSelector">
+            <span class="calendar__month" id="currentMonth">April</span>
+            <span class="calendar__year" id="currentYear">2025</span>
+            <div class="calendar__month-dropdown" id="monthDropdown">
+              <div class="month-option" data-month="0">January</div>
+              <div class="month-option" data-month="1">February</div>
+              <div class="month-option" data-month="2">March</div>
+              <div class="month-option active" data-month="3">April</div>
+              <div class="month-option" data-month="4">May</div>
+              <div class="month-option" data-month="5">June</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="calendar__body">
+          <div class="calendar__days">
+            <div>Mon</div>
+            <div>Tue</div>
+            <div>Wed</div>
+            <div>Thu</div>
+            <div>Fri</div>
+            <div>Sat</div>
+            <div>Sun</div>
+          </div>
+
+          <div class="calendar__dates" id="calendarDates">
+            <!-- Dates will be generated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event Panel (Desktop) -->
+    <div class="event-panel">
+      <div class="event-details" id="eventDetails">
+        <div class="event-details__placeholder" id="eventPlaceholder">
+          <div class="event-details__placeholder-icon">📅</div>
+          <div class="event-details__placeholder-text">Select a date with an event to view details</div>
+        </div>
+        <div id="eventContent" style="display: none;">
+          <h3 class="event-details__title" id="eventTitle">Quarterly Planning Meeting</h3>
+          <div class="event-details__date" id="eventDate">April 15, 2025 • 10:00 AM - 12:00 PM</div>
+          <div class="event-details__content" id="eventContentText">
+            <p>Join us for our important quarterly planning session where we'll:</p>
+            <ul>
+              <li>Review Q1 performance metrics</li>
+              <li>Set objectives for Q2</li>
+              <li>Align team priorities</li>
+              <li>Discuss upcoming projects</li>
+            </ul>
+            <p><strong>📍 Location:</strong> Conference Room B (3rd Floor)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Form Modal -->
+  <div class="event-form-modal" id="eventFormModal">
+    <div class="event-form-container">
+      <div class="event-form-header">
+        <h3 class="event-form-title">Add New Event</h3>
+        <button class="close-form-btn" id="closeFormBtn">&times;</button>
+      </div>
+      <form id="eventForm">
+        <div class="form-group">
+          <label for="newEventDate" class="form-label">Date</label>
+          <input type="date" id="newEventDate" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="newEventTime" class="form-label">Time</label>
+          <input type="time" id="newEventTime" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="newEventTitle" class="form-label">Event Title</label>
+          <input type="text" id="newEventTitle" class="form-input" placeholder="Enter event title" required>
+        </div>
+        <div class="form-group">
+          <label for="newEventDescription" class="form-label">Description</label>
+          <textarea id="newEventDescription" class="form-input form-textarea" placeholder="Enter event description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="newEventLocation" class="form-label">Location</label>
+          <input type="text" id="newEventLocation" class="form-input" placeholder="Enter location">
+        </div>
+        <button type="submit" class="form-submit-btn">Add Event</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Mobile Event Modal -->
+  <div class="event-modal" id="eventModal">
+    <div class="event-details">
+      <div class="event-details__header">
+        <h3 class="event-details__title">Quarterly Planning Meeting</h3>
+        <button class="event-modal__close" id="closeModal">&times;</button>
+      </div>
+      <div class="event-details__date">April 15, 2025 • 10:00 AM - 12:00 PM</div>
+      <div class="event-details__content">
+        <p>Join us for our important quarterly planning session where we'll:</p>
+        <ul>
+          <li>Review Q1 performance metrics</li>
+          <li>Set objectives for Q2</li>
+          <li>Align team priorities</li>
+          <li>Discuss upcoming projects</li>
+        </ul>
+        <p><strong>📍 Location:</strong> Conference Room B (3rd Floor)</p>
+      </div>
+      <div class="event-details__footer">
+        <button class="event-modal__button event-modal__button--primary" id="modalOkButton">Got it!</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    // Import Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    import { 
+      getFirestore, 
+      collection, 
+      addDoc, 
+      onSnapshot, 
+      query, 
+      where, 
+      orderBy, 
+      serverTimestamp,
+      getDocs 
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+  
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCMKsgsvp6gNyLOaOdbWcGltuFIcP_EAtw",
+      authDomain: "eventcalendar-eeaa6.firebaseapp.com",
+      projectId: "eventcalendar-eeaa6",
+      storageBucket: "eventcalendar-eeaa6.appspot.com",
+      messagingSenderId: "913543020019",
+      appId: "1:913543020019:web:925fe28632f4abfe5f6686",
+      measurementId: "G-JKK3CG8PW6"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
+  
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const monthYearSelector = document.getElementById('monthYearSelector');
+      const currentMonthElement = document.getElementById('currentMonth');
+      const currentYearElement = document.getElementById('currentYear');
+      const monthDropdown = document.getElementById('monthDropdown');
+      const calendarDates = document.getElementById('calendarDates');
+      const eventDetails = document.getElementById('eventDetails');
+      const eventPlaceholder = document.getElementById('eventPlaceholder');
+      const eventContent = document.getElementById('eventContent');
+      const eventTitle = document.getElementById('eventTitle');
+      const eventDate = document.getElementById('eventDate');
+      const eventContentText = document.getElementById('eventContentText');
+      const eventModal = document.getElementById('eventModal');
+      const closeModal = document.getElementById('closeModal');
+      const modalOkButton = document.getElementById('modalOkButton');
+      const addEventBtn = document.getElementById('addEventBtn');
+      const eventFormModal = document.getElementById('eventFormModal');
+      const closeFormBtn = document.getElementById('closeFormBtn');
+      const eventForm = document.getElementById('eventForm');
+      
+      const months = [
+        "January", "February", "March", "April", 
+        "May", "June", "July", "August",
+        "September", "October", "November", "December"
+      ];
+      
+      let currentMonth = new Date().getMonth();
+      let currentYear = new Date().getFullYear();
+      let events = {};
+  
+      // Initialize calendar
+      initCalendar();
+      
+      // Event Listeners
+      monthYearSelector.addEventListener('click', function(e) {
+        e.stopPropagation();
+        monthDropdown.style.display = monthDropdown.style.display === 'grid' ? 'none' : 'grid';
+      });
+      
+      document.addEventListener('click', function() {
+        monthDropdown.style.display = 'none';
+      });
+      
+      const monthOptions = document.querySelectorAll('.month-option');
+      monthOptions.forEach(option => {
+        option.addEventListener('click', function(e) {
+          e.stopPropagation();
+          currentMonth = parseInt(this.dataset.month);
+          currentMonthElement.textContent = months[currentMonth];
+          
+          monthOptions.forEach(opt => opt.classList.remove('active'));
+          this.classList.add('active');
+          
+          loadEvents().then(updateCalendar).catch(handleError);
+          monthDropdown.style.display = 'none';
+        });
+      });
+      
+      addEventBtn.addEventListener('click', function() {
+        eventFormModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('newEventDate').value = today;
+      });
+      
+      closeFormBtn.addEventListener('click', function() {
+        eventFormModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      });
+      
+      eventFormModal.addEventListener('click', function(e) {
+        if (e.target === eventFormModal) {
+          eventFormModal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+      
+      eventForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        try {
+          const date = document.getElementById('newEventDate').value;
+          const time = document.getElementById('newEventTime').value;
+          const title = document.getElementById('newEventTitle').value;
+          const description = document.getElementById('newEventDescription').value;
+          const location = document.getElementById('newEventLocation').value;
+          
+          if (!date || !time || !title) {
+            throw new Error("Please fill all required fields");
+          }
+          
+          const dateObj = new Date(date);
+          const month = dateObj.getMonth();
+          const day = dateObj.getDate();
+          const year = dateObj.getFullYear();
+          
+          const timeParts = time.split(':');
+          let hours = parseInt(timeParts[0]);
+          const minutes = timeParts[1];
+          const ampm = hours >= 12 ? 'PM' : 'AM';
+          hours = hours % 12;
+          hours = hours ? hours : 12;
+          const formattedTime = `${hours}:${minutes} ${ampm}`;
+          const formattedDate = `${months[month]} ${day}, ${year} • ${formattedTime}`;
+          
+          const eventData = {
+            title: title,
+            date: formattedDate,
+            description: description,
+            location: location,
+            timestamp: serverTimestamp(),
+            dateKey: `${month}-${day}`,
+            yearMonth: `${year}-${month}`,
+            rawDate: date,
+            rawTime: time
+          };
+          
+          await addDoc(collection(db, 'events'), eventData);
+          eventFormModal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+          this.reset();
+        } catch (error) {
+          console.error("Error adding event:", error);
+          alert(`Error: ${error.message}`);
+        }
+      });
+      
+      closeModal.addEventListener('click', closeEventModal);
+      modalOkButton.addEventListener('click', closeEventModal);
+      eventModal.addEventListener('click', function(e) {
+        if (e.target === eventModal) closeEventModal();
+      });
+  
+      // Core Functions
+      async function initCalendar() {
+        try {
+          currentMonthElement.textContent = months[currentMonth];
+          currentYearElement.textContent = currentYear;
+          
+          const q = query(
+            collection(db, 'events'),
+            where('yearMonth', '==', `${currentYear}-${currentMonth}`),
+            orderBy('timestamp')
+          );
+          
+          onSnapshot(q, 
+            (snapshot) => {
+              loadEvents().then(updateCalendar).catch(handleError);
+            },
+            (error) => {
+              handleError(error, true);
+            }
+          );
+          
+          await loadEvents();
+          updateCalendar();
+        } catch (error) {
+          handleError(error);
+        }
+      }
+      
+      async function loadEvents() {
+        try {
+          events = {};
+          const q = query(
+            collection(db, 'events'),
+            where('yearMonth', '==', `${currentYear}-${currentMonth}`),
+            orderBy('timestamp')
+          );
+          
+          const querySnapshot = await getDocs(q);
+          
+          querySnapshot.forEach(doc => {
+            const data = doc.data();
+            events[data.dateKey] = {
+              id: doc.id,
+              title: data.title,
+              date: data.date,
+              description: data.description ? `<p>${data.description}</p>` : '',
+              location: data.location
+            };
+            
+            if (data.location) {
+              events[data.dateKey].description += 
+                `<p><strong>📍 Location:</strong> ${data.location}</p>`;
+            }
+          });
+        } catch (error) {
+          throw error;
+        }
+      }
+      
+      function updateCalendar() {
+        const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        const prevMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+        const daysFromPrevMonth = (firstDay === 0 ? 6 : firstDay - 1);
+        
+        calendarDates.innerHTML = '';
+        
+        for (let i = daysFromPrevMonth - 1; i >= 0; i--) {
+          calendarDates.appendChild(createDateElement(prevMonthDays - i, true));
+        }
+        
+        for (let i = 1; i <= daysInMonth; i++) {
+          const dateElement = createDateElement(i, false);
+          const eventKey = `${currentMonth}-${i}`;
+          
+          if (events[eventKey]) {
+            dateElement.classList.add('calendar__date--has-event');
+            dateElement.addEventListener('click', () => showEventDetails(events[eventKey]));
+          } else {
+            dateElement.addEventListener('click', function() {
+              if (window.innerWidth > 768) {
+                eventPlaceholder.style.display = 'flex';
+                eventContent.style.display = 'none';
+              }
+            });
+          }
+          
+          calendarDates.appendChild(dateElement);
+        }
+        
+        const totalCells = Math.ceil((daysFromPrevMonth + daysInMonth) / 7) * 7;
+        const daysFromNextMonth = totalCells - (daysFromPrevMonth + daysInMonth);
+        
+        for (let i = 1; i <= daysFromNextMonth; i++) {
+          calendarDates.appendChild(createDateElement(i, true));
+        }
+      }
+      
+      function createDateElement(day, isGrey) {
+        const dateElement = document.createElement('div');
+        dateElement.className = 'calendar__date' + (isGrey ? ' calendar__date--grey' : '');
+        dateElement.innerHTML = `<span>${day}</span>`;
+        return dateElement;
+      }
+      
+      function showEventDetails(event) {
+        if (window.innerWidth > 768) {
+          eventPlaceholder.style.display = 'none';
+          eventContent.style.display = 'block';
+          eventTitle.textContent = event.title;
+          eventDate.textContent = event.date;
+          eventContentText.innerHTML = event.description;
+        } else {
+          const modalContent = document.querySelector('.event-modal .event-details');
+          modalContent.innerHTML = `
+            <div class="event-details__header">
+              <h3 class="event-details__title">${event.title}</h3>
+              <button class="event-modal__close" id="closeModal">&times;</button>
+            </div>
+            <div class="event-details__date">${event.date}</div>
+            <div class="event-details__content">${event.description}</div>
+            <div class="event-details__footer">
+              <button class="event-modal__button event-modal__button--primary" id="modalOkButton">Got it!</button>
+            </div>
+          `;
+          document.getElementById('closeModal').addEventListener('click', closeEventModal);
+          document.getElementById('modalOkButton').addEventListener('click', closeEventModal);
+          eventModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      
+      function closeEventModal() {
+        eventModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+      
+      function handleError(error, isFirestoreError = false) {
+        console.error("Error:", error);
+        let message = error.message;
+        
+        if (isFirestoreError && error.code === 'failed-precondition') {
+          message += "\n\nThis error usually means you need to create a Firestore index." +
+                     "\nCheck your browser console for a link to create it automatically." +
+                     "\nThe index may take a few minutes to build after creation.";
+        }
+        
+        alert(message);
+      }
+    });
+  </script>
+</body>
+</html>

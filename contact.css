@@ -1,0 +1,62 @@
+.contact-section {
+  position: relative;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #0a192f 0%, #112240 50%, #0a192f 100%);
+  overflow: hidden;
+  z-index: 3;
+}
+
+.contact-container {
+  position: relative;
+  z-index: 4;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.contact-card {
+  position: relative;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+  transition: all 0.3s ease;
+}
+
+.contact-form {
+  position: relative;
+  z-index: 4;
+}
+
+.contact-info {
+  position: relative;
+  z-index: 4;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0;
+  animation: pulse 6s infinite;
+  z-index: 3;
+}
+
+.contact-line {
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.9), transparent);
+  opacity: 0;
+  animation: slideIn 4s infinite;
+  z-index: 3;
+} 

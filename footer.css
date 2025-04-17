@@ -1,0 +1,378 @@
+/* ========== FOOTER/CONTACT SECTION STYLES ========== */
+/* Clean footer with contact information and social links */
+
+:root {
+  --footer-bg: #0a192f;
+  --footer-text: #cbd5e1;
+  --footer-heading: #f8fafc;
+  --footer-link: #38bdf8;
+  --footer-border: #1e293b;
+}
+
+/* Footer Container */
+.custom-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 4rem 1rem 2rem;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+/* Footer Wrapper */
+.footer-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Brand Section */
+.footer-brand {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+#horizon_logo2 {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  outline: 2.5px solid rgba(255, 255, 255, 0.44);
+  object-fit: cover;
+}
+
+.footer-title {
+  font-size: 1.75rem;
+  color: var(--footer-heading);
+  margin: 0;
+  font-weight: 700;
+}
+
+.footer-subtitle {
+  font-size: 0.95rem;
+  color: var(--footer-text);
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* Contact Section */
+.footer-contact {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-contact h3 {
+  color: var(--footer-heading);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+.footer-contact h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, 
+      transparent, 
+      #38bdf8, 
+      #0ea5e9, 
+      #38bdf8, 
+      transparent);
+  background-size: 200% 100%;
+  animation: flowingLine 3s linear infinite;
+  opacity: 0.8;
+  border-radius: 3px;
+}
+
+@keyframes flowingLine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.footer-contact p {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--footer-text);
+  font-size: 1rem;
+}
+
+.footer-contact a {
+  color: var(--footer-link);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-contact a:hover {
+  color: var(--accent-color);
+}
+
+.footer-small-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--footer-link);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  margin-top: 3rem;
+  border-top: 1px solid var(--footer-border);
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--footer-text);
+  opacity: 0.7;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.developer-credit {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.developer-credit a {
+  color: #38bdf8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.developer-credit a:hover {
+  color: #7dd3fc;
+}
+
+/* Remove the flowing line animation */
+.developer-credit a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+  background-size: 200% 100%;
+  animation: flowingLine 2s linear infinite;
+}
+
+.developer-credit a:hover {
+  color: #7dd3fc;
+  transform: translateY(-2px);
+}
+
+@keyframes flowingLine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .footer-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .footer-brand, .footer-contact {
+    min-width: 100%;
+  }
+  
+  .footer-contact h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer-wrapper {
+    gap: 2rem;
+  }
+  
+  .footer-brand {
+    flex: 1;
+  }
+  
+  .footer-contact {
+    flex: 1;
+  }
+}
+
+/* ========== RESPONSIVE MEDIA QUERIES ========== */
+
+/* Large Desktop Screens */
+@media (min-width: 1440px) {
+  .footer-wrapper {
+    max-width: 1400px;
+    gap: 4rem;
+  }
+  
+  .footer-brand, .footer-contact {
+    min-width: 300px;
+  }
+  
+  .footer-title {
+    font-size: 2rem;
+  }
+}
+
+/* Landscape Tablets and Small Desktops */
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .footer-wrapper {
+    max-width: 1100px;
+    gap: 3rem;
+  }
+  
+  .footer-brand, .footer-contact {
+    min-width: 280px;
+  }
+}
+
+/* Portrait Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .footer-wrapper {
+    max-width: 900px;
+    gap: 2.5rem;
+  }
+  
+  .footer-brand, .footer-contact {
+    min-width: 250px;
+  }
+  
+  .footer-title {
+    font-size: 1.75rem;
+  }
+  
+  .footer-contact h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Large Mobile Devices */
+@media (min-width: 481px) and (max-width: 767px) {
+  .custom-footer {
+    padding: 3rem 1rem 1.5rem;
+  }
+  
+  .footer-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .footer-brand, .footer-contact {
+    min-width: 100%;
+    text-align: center;
+  }
+  
+  .footer-brand {
+    align-items: center;
+  }
+  
+  .footer-title {
+    font-size: 1.5rem;
+  }
+  
+  .footer-contact h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .custom-footer {
+    padding: 2.5rem 0.75rem 1rem;
+  }
+  
+  .footer-wrapper {
+    gap: 1.5rem;
+  }
+  
+  .footer-title {
+    font-size: 1.25rem;
+  }
+  
+  .footer-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .footer-contact p {
+    font-size: 0.9rem;
+  }
+  
+  .footer-bottom {
+    font-size: 0.75rem;
+  }
+}
+
+/* Portrait Orientation Specific */
+@media (orientation: portrait) {
+  .custom-footer {
+    padding: 3rem 1rem 1.5rem;
+  }
+  
+  .footer-wrapper {
+    gap: 2rem;
+  }
+}
+
+/* Landscape Orientation Specific */
+@media (orientation: landscape) {
+  .custom-footer {
+    padding: 3.5rem 2rem 2rem;
+  }
+  
+  .footer-wrapper {
+    gap: 3rem;
+  }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  #horizon_logo2 {
+    outline: 3px solid rgba(255, 255, 255, 0.44);
+  }
+  
+  .footer-contact h3::after {
+    height: 4px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .custom-footer {
+    background: #0a192f;
+  }
+  
+  .footer-bottom {
+    border-top-color: #1e293b;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer-contact p {
+    transition: none;
+  }
+  
+  .footer-contact a {
+    transition: none;
+  }
+}
