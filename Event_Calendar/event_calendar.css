@@ -924,7 +924,8 @@
     }
 
     .event-calendar-container {
-      padding: 15px 1%;
+      padding: 15px 5%;
+      padding-bottom: 50px;
     }
     
     .event-form-container {
