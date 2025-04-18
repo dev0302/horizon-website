@@ -496,160 +496,182 @@
   }
   
   /* Mobile Event Modal */
-  .calendar-mobile-modal {
+  .event-modal {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(15, 23, 42, 0.95);
     z-index: 1000;
     justify-content: center;
     align-items: center;
+    animation: fadeIn 0.3s ease;
     padding: 20px;
-  }
-  
-  .calendar-mobile-details {
-    background-color: #1e293b;
-    border-radius: 16px;
-    width: 100%;
-    max-width: 500px;
-    max-height: 90vh;
+    box-sizing: border-box;
     overflow-y: auto;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    animation: modalAppear 0.3s ease-out;
-    position: relative;
+    overflow-x: hidden;
   }
   
-  @keyframes modalAppear {
+  .event-modal .event-details {
+    background-color: #1e293b;
+    border-radius: 20px;
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid #334155;
+    position: relative;
+    animation: modalSlideIn 0.3s ease forwards;
+  }
+  
+  @keyframes modalSlideIn {
     from {
-      opacity: 0;
       transform: translateY(20px);
+      opacity: 0;
     }
     to {
-      opacity: 1;
       transform: translateY(0);
+      opacity: 1;
     }
   }
   
-  .calendar-mobile-details__header {
-    padding: 20px 20px 10px;
-    position: relative;
+  .event-modal .event-details::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #3b82f6, #ec4899);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   
-  .calendar-mobile-details__title {
-    font-size: 1.5rem;
-    font-weight: 700;
+  .event-modal .event-details__title {
+    font-size: 1.6rem;
+    font-weight: 600;
     color: #f8fafc;
-    margin: 0;
+    margin: 0 0 15px 0;
     padding-right: 30px;
   }
   
-  .calendar-mobile-details__date {
-    padding: 15px 20px 5px;
-    color: #38bdf8;
+  .event-modal .event-details__date {
+    color: #3b82f6;
+    margin-bottom: 20px;
     font-weight: 500;
-    font-size: 1rem;
     display: flex;
     align-items: center;
+    font-size: 1rem;
   }
   
-  .calendar-mobile-details__date::before {
+  .event-modal .event-details__date::before {
     content: "📅";
     margin-right: 10px;
   }
   
-  .calendar-mobile-details__content {
-    display: flex;
-    flex-direction: column;
-    padding: 15px 20px;
-    color: #e2e8f0;
+  .event-modal .event-details__content {
     line-height: 1.6;
+    color: #94a3b8;
   }
   
-  .calendar-mobile-details__content p {
-    margin-bottom: 12px;
+  .event-modal .event-details__content ul {
+    padding-left: 20px;
+    color: #e2e8f0;
+    margin-bottom: 15px;
   }
   
-  .calendar-mobile-details__content ul {
-    margin-left: 20px;
-    margin-bottom: 12px;
+  .event-modal .event-details__content li {
+    margin-bottom: 10px;
   }
   
-  .calendar-mobile-details__content li {
-    margin-bottom: 8px;
+  .event-modal .event-details__content p {
+    margin-bottom: 15px;
   }
   
-  .calendar-mobile-details__footer {
-    padding: 15px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: linear-gradient(to right, #1e293b, #0f172a);
-    border-radius: 0 0 16px 16px;
+  .event-modal .event-details__content strong {
+    color: #e2e8f0;
   }
   
-  .calendar-mobile-modal__button {
-    background-color: #38bdf8;
-    color: #0f172a;
+  /* Close button for mobile modal */
+  .event-modal .close-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
     border: none;
-    padding: 10px 24px;
-    border-radius: 8px;
-    font-weight: 600;
+    color: #94a3b8;
+    font-size: 1.5rem;
     cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
     transition: all 0.2s ease;
-    font-size: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  .calendar-mobile-modal__button:hover {
-    background-color: #0ea5e9;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  .event-modal .close-modal-btn:hover {
+    background-color: rgba(148, 163, 184, 0.1);
+    color: #e2e8f0;
   }
   
-  .calendar-mobile-modal__button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Mobile-specific adjustments */
+  /* Mobile-specific styles */
   @media (max-width: 480px) {
-    .calendar-mobile-details {
-      max-height: 85vh;
+    .event-modal {
+      padding: 15px;
+    }
+    
+    .event-modal .event-details {
+      padding: 20px;
       width: 95%;
+      max-height: 85vh;
     }
     
-    .calendar-mobile-details__title {
-      font-size: 1.3rem;
+    .event-modal .event-details__title {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
     }
     
-    .calendar-mobile-details__date {
+    .event-modal .event-details__date {
       font-size: 0.9rem;
-      padding: 8px 20px 2px;
-      margin-bottom: 0;
+      margin-bottom: 15px;
     }
     
-    .calendar-mobile-details__content {
-      font-size: 0.95rem;
-      padding: 10px 20px;
+    .event-modal .event-details__content {
+      font-size: 0.9rem;
     }
     
-    .calendar-mobile-details__header {
-      padding: 15px 20px 5px;
+    /* Improve scrolling for long content */
+    .event-modal .event-details {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: #3b82f6 #1e293b;
     }
     
-    .calendar-mobile-details__footer {
-      padding: 10px 20px;
+    .event-modal .event-details::-webkit-scrollbar {
+      width: 6px;
     }
     
-    .calendar-mobile-modal__button {
-      padding: 10px 24px;
-      width: 80%;
-      max-width: 250px;
+    .event-modal .event-details::-webkit-scrollbar-track {
+      background: #1e293b;
+      border-radius: 3px;
     }
+    
+    .event-modal .event-details::-webkit-scrollbar-thumb {
+      background-color: #3b82f6;
+      border-radius: 3px;
+    }
+  }
+  
+  /* Fix for event modal display */
+  .event-modal.show {
+    display: flex;
   }
   
   /* Firefly Styles - Scoped to event calendar section */
@@ -916,25 +938,6 @@
       width: 95%;
       max-height: 90vh;
     }
-    .event-details__footer{
-      display: flex;
-      gap: 1rem;
-    }
-    .event-modal__button{
-      background-color: #3b82f6;
-      color: white;
-      border: none;
-      padding: 0.1rem 0.6rem;
-      border-radius: 8px;
-    }
-    .event-modal__close{
-      background-color: #3b82f6;
-      color: white;
-      border: none;
-      padding: 0.1rem 0.6rem;
-      border-radius: 8px;
-    }
-    
     
     .event-modal .event-details__title {
       font-size: 1.4rem;
@@ -942,17 +945,10 @@
     
     .event-modal .event-details__date {
       font-size: 0.9rem;
-      display: block;
     }
     
     .event-modal .event-details__content {
       font-size: 0.9rem;
-      display: flex;
-    }
-    .event-details__content {
-      line-height: 1.6;
-      color: #94a3b8;
-      flex: none;
     }
   }
 

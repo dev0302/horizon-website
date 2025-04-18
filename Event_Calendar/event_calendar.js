@@ -28,13 +28,15 @@
     const eventTitle = document.getElementById('eventTitle');
     const eventDate = document.getElementById('eventDate');
     const eventContentText = document.getElementById('eventContentText');
-    const eventModal = document.getElementById('eventModal');
+    const eventModal = document.getElementById('calendarEventModal');
     const closeModal = document.getElementById('closeModal');
     const modalOkButton = document.getElementById('modalOkButton');
-    const addEventBtn = document.getElementById('addEventBtn');
-    const eventFormModal = document.getElementById('eventFormModal');
-    const closeFormBtn = document.getElementById('closeFormBtn');
-    const eventForm = document.getElementById('eventForm');
+    
+    // Unused elements - commented out
+    // const addEventBtn = document.getElementById('addEventBtn');
+    // const eventFormModal = document.getElementById('eventFormModal');
+    // const closeFormBtn = document.getElementById('closeFormBtn');
+    // const eventForm = document.getElementById('eventForm');
     
     // Month names array
     const months = [
@@ -80,7 +82,8 @@
       });
     });
     
-    // Add Event button click handler
+    // Add Event button click handler - Not currently in use
+    /*
     addEventBtn.addEventListener('click', function() {
       eventFormModal.style.display = 'flex';
       document.body.style.overflow = 'hidden';
@@ -161,6 +164,7 @@
         alert(`Error: ${error.message}`);
       }
     });
+    */
     
     // Modal close handlers
     eventModal.addEventListener('click', function(e) {
@@ -321,25 +325,17 @@
       } 
       // Mobile view - show in modal
       else {
-        // Mobile view - create modal content
-        const modalContent = `
-        <div class="event-details__header">
-          <h3 class="event-details__title">${event.title}</h3>
-          <button class="event-modal__close">&times;</button>
-        </div>
-        <div class="event-details__date">${event.date}</div>
-        <div class="event-details__content">${event.description}</div>
-        <div class="event-details__footer">
-          <button class="event-modal__button event-modal__button--primary">Got it!</button>
-        </div>
-      `;
-      document.getElementById('mobileEventDetails').innerHTML = modalContent;
-      eventModal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+        // Update mobile event details with event data
+        document.getElementById('calendarMobileEventTitle').textContent = event.title;
+        document.getElementById('calendarMobileEventDate').textContent = event.date;
+        document.getElementById('calendarMobileEventContent').innerHTML = event.description;
+        
+        // Show the modal
+        eventModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
 
-      // Add event listeners to new elements
-      document.querySelector('.event-modal__close').addEventListener('click', closeEventModal);
-      document.querySelector('.event-modal__button').addEventListener('click', closeEventModal);
+        // Add event listeners to close buttons
+        document.querySelector('.calendar-mobile-modal__button').addEventListener('click', closeEventModal);
       }
     }
     
@@ -347,7 +343,7 @@
      * Close the mobile event modal
      */
     function closeEventModal() {
-      document.getElementById('eventModal').style.display = 'none';
+      document.getElementById('calendarEventModal').style.display = 'none';
       document.body.style.overflow = 'auto';
     }
 
