@@ -137,15 +137,15 @@
             <div class="content-left" data-aos="fade-up">
                 <p id="about_us_para" data-aos="fade-up">About Us</p>
                 <p class="section-description" data-aos="fade-up">
-                    Horizon isn't just a society — it's a movement of minds, a space where voices rise, ideas collide, and thought finds its true horizon. Here, words aren't mere sounds; they are forces that challenge conventions, spark conversations, and inspire change. At Horizon, we don't debate to dominate — we speak to understand, we listen to grow, and we think to transform. From the power of the spoken word to the strength of silent reflections, Horizon becomes the canvas for expression, intellect, and empathy. It is a community of thoughtful rebels — curious enough to question, bold enough to speak, and wise enough to listen. More than anything, Horizon is where the art of reason meets the heart of expression — a sanctuary where every perspective matters, and every voice is heard.
-                </p>
-            </div>
+              Horizon isn't just a society — it's a movement of minds, a space where voices rise, ideas collide, and thought finds its true horizon. Here, words aren't mere sounds; they are forces that challenge conventions, spark conversations, and inspire change. At Horizon, we don't debate to dominate — we speak to understand, we listen to grow, and we think to transform. From the power of the spoken word to the strength of silent reflections, Horizon becomes the canvas for expression, intellect, and empathy. It is a community of thoughtful rebels — curious enough to question, bold enough to speak, and wise enough to listen. More than anything, Horizon is where the art of reason meets the heart of expression — a sanctuary where every perspective matters, and every voice is heard.
+            </p>
+          </div>
 
             <div class="content-right" data-aos="fade-up" data-aos-delay="200" data-aos-easing="ease-out">
-                <div class="image-container">
-                    <img src="tech_talk_images/grouppic.jpg" class="section-image" alt="Horizon Group Photo">
-                </div>
+            <div class="image-container">
+              <img src="tech_talk_images/grouppic.jpg" class="section-image" alt="Horizon Group Photo">
             </div>
+          </div>
         </div>
       </div>
 
@@ -265,11 +265,22 @@
 
             <!-- Scroll Button and Additional Team Section -->
             <div class="scroll-button-container">
-              <button class="animated-scroll-btn" id="expandSectionBtn">
-                <span class="arrow-icon">→</span>
-                <span class="btn-text">Meet More Team Members</span>
+              <button class="button" id="expandSectionBtn">
+                <span class="text">Meet More Team Members</span>
+                <div class="icon">
+                  <svg>
+                    <use xlink:href="#arrow-right"></use>
+                  </svg>
+                </div>
               </button>
             </div>
+
+            <!-- Add SVG symbol definition -->
+            <svg style="display: none">
+              <symbol id="arrow-right" viewBox="0 0 20 10">
+                <path d="M14.84 0l-1.08 1.06 3.3 3.2H0v1.49h17.05l-3.3 3.2L14.84 10 20 5l-5.16-5z"></path>
+              </symbol>
+            </svg>
 
             <div class="additional-section hidden" id="additionalSection">
               <div class="testimonial-container">
@@ -287,9 +298,9 @@
                       </div>
                     </div>
                     <!-- More cards can be added here -->
-                  </div>
                 </div>
               </div>
+            </div>
             </div>
 
             <!-- Executive Team Tab Content -->
@@ -823,21 +834,21 @@
       </div>
     </div>
 
-      
-    <!-- Footer Section -->
-    <section id="contact-section">
-      <footer class="custom-footer">
-        <div class="container">
-          <div class="footer-wrapper">
-            <div class="footer-brand">
-              <img id="horizon_logo2" src="horizon_logo2.jpg" alt="Horizon Logo">
-              <h2 class="footer-title">Horizon Society</h2>
-              <p class="footer-subtitle">Igniting Innovation. Inspiring Change.</p>
-            </div>
-      
-            <div class="footer-contact">
-              <h3>Contact Us</h3>
-              <p><i data-feather="mail" class="footer-small-icon"></i> drkaushal25@gmail.com</p>
+
+      <!-- Footer Section -->
+      <section id="contact-section">
+        <footer class="custom-footer">
+          <div class="container">
+            <div class="footer-wrapper">
+              <div class="footer-brand">
+                <img id="horizon_logo2" src="horizon_logo2.jpg" alt="Horizon Logo">
+                <h2 class="footer-title">Horizon Society</h2>
+                <p class="footer-subtitle">Igniting Innovation. Inspiring Change.</p>
+              </div>
+        
+              <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i data-feather="mail" class="footer-small-icon"></i> drkaushal25@gmail.com</p>
             <p><i data-feather="instagram" class="footer-small-icon"></i> 
               <a href="https://www.instagram.com/horizonbvp/?hl=en" target="_blank">@horizonbvp</a>
             </p>
@@ -848,25 +859,25 @@
               <a href="https://www.linkedin.com/search/results/all/?heroEntityKey=urn%3Ali%3Aorganization%3A88400039&keywords=HORIZON_BVP&origin=ENTITY_SEARCH_HOME_HISTORY&sid=A51" target="_blank">linkedin.com/company/horizonbvcoe</a>
             </p>
             </div>
-          </div>
-      
-          <div class="footer-bottom">
-            <p>&copy; 2025 Horizon BVCOE. All rights reserved.</p>
+            </div>
+        
+            <div class="footer-bottom">
+              <p>&copy; 2025 Horizon BVCOE. All rights reserved.</p>
           <p class="developer-credit">Developed by - <a href="https://www.linkedin.com/in/dev-malik-976230311/" target="_blank">Dev</a></p>
           </div>
-        </div>
-      </footer>
-    </main>
-  </div>
+          </div>
+        </footer>
+      </main>
+    </div>
 
-<!-- JavaScript Files -->
-<script src="navigation.js"></script>
-<script src="animations.js"></script>
-<script src="tabs.js"></script>
+  <!-- JavaScript Files -->
+  <script src="navigation.js"></script>
+  <script src="animations.js"></script>
+  <script src="tabs.js"></script>
 <script src="typing.js"></script>
 <script src="text-effects.js"></script>
-<script src="landingpage.js"></script>
-<script src="scroll-animations.js"></script>
+  <script src="landingpage.js"></script>
+  <script src="scroll-animations.js"></script>
 <script src="scroll-animation.js"></script>
 <script src="Event_Calendar/event_calendar.js"></script>
 
