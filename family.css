@@ -13,7 +13,7 @@
 }
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
 
-/* Title - Core Team */
+/* Title - HORIZON FAMILY */
 .section-title{
   color: var(--text-color);
   font-size: 3rem;
@@ -23,6 +23,7 @@
   background-clip: text;
   color: transparent;
   position: relative;
+  text-align: center;
   letter-spacing: 0.35rem;
 }
 
@@ -68,7 +69,7 @@
     --box-glow-blur: 20px;
     --color: #00afaf;
     --box-glow-blur: 38px;
-    --box-glow-color: #00afaf2a;
+    --box-glow-color: #00afaf58;
     
   }
   
@@ -160,19 +161,18 @@
 }
 
 .testimonial-heading {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--text-color);
-    margin-top: 2rem;
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  background: linear-gradient(to right, var(--blue-400), #a78bfa);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: pulse 2s infinite;
-  position: relative;
-  letter-spacing: 0.25rem;
+    margin-top: 0.25rem;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.25rem;
+    background: linear-gradient(to right, var(--blue-400), #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    position: relative;
+    letter-spacing: 0.25rem;
 }
 
 
@@ -390,20 +390,10 @@
     font-weight: bold;
     padding: 0.25rem 0.5rem;
     border-radius: 4px;
-    animation: highlightPulse 2s infinite;
+    /* animation: highlightPulse 2s infinite; */
 }
 
-@keyframes highlightPulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
-    }
-}
+
 
 /* Department Icons */
 @font-face {
@@ -591,7 +581,7 @@
     }
     
     .testimonial-heading {
-        font-size: 1rem;
+        font-size: 1.25rem;
         margin-top: 0.05rem;
         margin-bottom: 0.2rem;
     }
