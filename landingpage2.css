@@ -124,7 +124,7 @@
   border-radius: 50%;
   background: radial-gradient(circle, rgba(56, 189, 248, 0.4), transparent 60%);
   transition: transform 0.2s ease-out;
-  animation: pulse 2s infinite alternate;
+  /* animation: pulse 2s infinite alternate; */
   filter: blur(20px);
 }
 

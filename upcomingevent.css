@@ -24,6 +24,23 @@
   position: relative;
   padding-left: 1rem;
 }
+.latest-events-title.animate {
+  animation: cinematicText 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes cinematicText {
+  0% {
+    transform: scale(5) translateZ(1000px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateZ(0);
+    opacity: 1;
+  }
+}
 
 .latest-events-title::before {
   content: '';
@@ -154,11 +171,13 @@
   border: 2px solid #38bdf8;
   transition: all 0.3s ease;
   margin: 20px 0;
+  margin-left: 2rem;
   animation: pulse 2s infinite;
   overflow: hidden;
+  max-width: 20rem;
 }
 
-.event-link::before {
+/* .event-link::before {
   content: '';
   position: absolute;
   top: 0;
@@ -172,7 +191,7 @@
     transparent
   );
   animation: shine 3s infinite;
-}
+} */
 
 .event-link:hover {
   transform: translateY(-2px);
@@ -192,17 +211,6 @@
   transform: translateX(4px);
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(56, 189, 248, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
-  }
-}
 
 @keyframes shine {
   0% {
@@ -221,9 +229,9 @@
   .event-link {
     width: 100%;
     justify-content: center;
-    font-size: 1.1rem;
-    padding: 15px 30px;
-    margin: 25px 0;
+    padding: 10px 20px;
+    margin: 20px 0;
+    font-size: 0.7rem;
     animation: mobilePulse 1.5s infinite;
   }
 
@@ -262,20 +270,27 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .event-card {
+    max-width: 90%;
     flex-direction: column;
+    margin: 0 auto;
   }
 
   .event-image {
     border-radius: 0 0 20px 20px;
-    height: 300px;
+    max-height: 200px;
   }
 
   .event-card-content {
-    padding: 1.5rem;
+    padding: 1rem;
+    gap: 1rem;
   }
 
   .latest-events-title {
     font-size: 1.5rem;
+  }
+  .event-description{
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.8);
   }
 }
 
@@ -482,83 +497,7 @@
   margin: 0;
 }
 
-.upcoming-event-description {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  margin: 0;
-}
 
-.upcoming-event-details {
-  display: flex;
-  gap: 2rem;
-  color: rgba(255, 255, 255, 0.8);
-  flex-wrap: wrap;
-}
-
-.upcoming-event-details span {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.upcoming-event-details span:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
-
-.upcoming-event-prize {
-  color: #22d3ee;
-  font-weight: 600;
-}
-
-.upcoming-event-prize i {
-  color: #8b5cf6;
-}
-
-.upcoming-event-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #22d3ee;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  margin-top: auto;
-  padding: 0.75rem 1.5rem;
-  background: rgba(34, 211, 238, 0.15);
-  border-radius: 8px;
-  border: 1px solid rgba(34, 211, 238, 0.3);
-}
-
-.upcoming-event-link:hover {
-  color: #8b5cf6;
-  transform: translateX(5px);
-  background: rgba(139, 92, 246, 0.2);
-  border-color: rgba(139, 92, 246, 0.4);
-}
-
-.upcoming-event-image {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  border-radius: 0 20px 20px 0;
-}
-
-.upcoming-event-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.upcoming-event-card:hover .upcoming-event-image img {
-  transform: scale(1.05);
-}
 
 /* Animations */
 @keyframes fadeInOut {
@@ -587,31 +526,21 @@
 
 @keyframes pulse {
   0%, 100% { 
-    opacity: 0.3; 
+    opacity: 0.5; 
     transform: scale(1); 
   }
   50% { 
     opacity: 0.7; 
-    transform: scale(1.2); 
+    transform: scale(1.1); 
   }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .upcoming-event-card {
-    flex-direction: column;
+  .latest-events-title{
+    font-size: 1.2rem;
   }
-
-  .upcoming-event-image {
-    border-radius: 0 0 20px 20px;
-    height: 300px;
-  }
-
-  .upcoming-event-content {
-    padding: 1.5rem;
-  }
-
-  .upcoming-event-title {
-    font-size: 2rem;
+  #upcoming-event-section{
+    padding: 4rem 1.5rem;
   }
 }
