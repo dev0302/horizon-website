@@ -667,10 +667,10 @@
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 0.2vw;
-    height: 0.2vw;
-    margin: -0.1vw 0 0 9.8vw;
-    animation: ease 100s infinite;
+    width: 0.4vw;
+    height: 0.4vw;
+    margin: -0.2vw 0 0 9.8vw;
+    animation: ease 100s alternate infinite;
     pointer-events: none;
   }
 
@@ -682,19 +682,19 @@
     height: 100%;
     border-radius: 50%;
     transform-origin: -10vw;
-    animation: drift ease infinite;
   }
 
   .event-calendar-container .firefly::before {
     background: black;
     opacity: 0.8;
+    animation: drift ease alternate infinite;
   }
 
   .event-calendar-container .firefly::after {
     background: white;
     opacity: 0;
     box-shadow: 0 0 0vw 0vw yellow;
-    animation: drift ease infinite, flash ease infinite;
+    animation: drift ease alternate infinite, flash ease infinite;
   }
 
   /* Firefly Animations */
@@ -706,47 +706,135 @@
   @keyframes flash {
     0%, 30%, 100% {
       opacity: 0;
-      box-shadow: 0 0 0px 0px yellow;
+      box-shadow: 0 0 0vw 0vw yellow;
     }
     5% {
       opacity: 1;
-      box-shadow: 0 0 2px 1px yellow;
+      box-shadow: 0 0 2vw 0.4vw yellow;
     }
   }
 
   /* Individual Firefly Movements - Increased to 25 fireflies with faster animations */
-  .event-calendar-container .firefly:nth-child(1) { animation-name: move1; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(2) { animation-name: move2; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(3) { animation-name: move3; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(4) { animation-name: move4; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(5) { animation-name: move5; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(6) { animation-name: move6; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(7) { animation-name: move7; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(8) { animation-name: move8; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(9) { animation-name: move9; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(10) { animation-name: move10; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(11) { animation-name: move11; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(12) { animation-name: move12; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(13) { animation-name: move13; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(14) { animation-name: move14; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(15) { animation-name: move15; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(16) { animation-name: move16; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(17) { animation-name: move17; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(18) { animation-name: move18; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(19) { animation-name: move19; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(20) { animation-name: move20; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(21) { animation-name: move21; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(22) { animation-name: move22; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(23) { animation-name: move23; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(24) { animation-name: move24; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(25) { animation-name: move25; animation-iteration-count: infinite; }
+  .event-calendar-container .firefly:nth-child(1) { animation-name: move1; }
+  .event-calendar-container .firefly:nth-child(1)::before { animation-duration: 8s; }
+  .event-calendar-container .firefly:nth-child(1)::after { animation-duration: 8s, 6000ms; animation-delay: 0ms, 1000ms; }
+
+  .event-calendar-container .firefly:nth-child(2) { animation-name: move2; }
+  .event-calendar-container .firefly:nth-child(2)::before { animation-duration: 12s; }
+  .event-calendar-container .firefly:nth-child(2)::after { animation-duration: 12s, 7000ms; animation-delay: 0ms, 2000ms; }
+
+  .event-calendar-container .firefly:nth-child(3) { animation-name: move3; }
+  .event-calendar-container .firefly:nth-child(3)::before { animation-duration: 10s; }
+  .event-calendar-container .firefly:nth-child(3)::after { animation-duration: 10s, 5000ms; animation-delay: 0ms, 1500ms; }
+
+  .event-calendar-container .firefly:nth-child(4) { animation-name: move4; }
+  .event-calendar-container .firefly:nth-child(4)::before { animation-duration: 15s; }
+  .event-calendar-container .firefly:nth-child(4)::after { animation-duration: 15s, 8000ms; animation-delay: 0ms, 2500ms; }
+
+  .event-calendar-container .firefly:nth-child(5) { animation-name: move5; }
+  .event-calendar-container .firefly:nth-child(5)::before { animation-duration: 11s; }
+  .event-calendar-container .firefly:nth-child(5)::after { animation-duration: 11s, 6500ms; animation-delay: 0ms, 1800ms; }
+
+  .event-calendar-container .firefly:nth-child(6) { animation-name: move6; }
+  .event-calendar-container .firefly:nth-child(6)::before { animation-duration: 13s; }
+  .event-calendar-container .firefly:nth-child(6)::after { animation-duration: 13s, 7500ms; animation-delay: 0ms, 2200ms; }
+
+  .event-calendar-container .firefly:nth-child(7) { animation-name: move7; }
+  .event-calendar-container .firefly:nth-child(7)::before { animation-duration: 9s; }
+  .event-calendar-container .firefly:nth-child(7)::after { animation-duration: 9s, 5500ms; animation-delay: 0ms, 1200ms; }
+
+  .event-calendar-container .firefly:nth-child(8) { animation-name: move8; }
+  .event-calendar-container .firefly:nth-child(8)::before { animation-duration: 14s; }
+  .event-calendar-container .firefly:nth-child(8)::after { animation-duration: 14s, 7200ms; animation-delay: 0ms, 2100ms; }
+
+  .event-calendar-container .firefly:nth-child(9) { animation-name: move9; }
+  .event-calendar-container .firefly:nth-child(9)::before { animation-duration: 10s; }
+  .event-calendar-container .firefly:nth-child(9)::after { animation-duration: 10s, 4500ms; animation-delay: 0ms, 900ms; }
+
+  .event-calendar-container .firefly:nth-child(10) { animation-name: move10; }
+  .event-calendar-container .firefly:nth-child(10)::before { animation-duration: 16s; }
+  .event-calendar-container .firefly:nth-child(10)::after { animation-duration: 16s, 8500ms; animation-delay: 0ms, 2800ms; }
+
+  .event-calendar-container .firefly:nth-child(11) { animation-name: move11; }
+  .event-calendar-container .firefly:nth-child(11)::before { animation-duration: 11s; }
+  .event-calendar-container .firefly:nth-child(11)::after { animation-duration: 11s, 6200ms; animation-delay: 0ms, 1600ms; }
+
+  .event-calendar-container .firefly:nth-child(12) { animation-name: move12; }
+  .event-calendar-container .firefly:nth-child(12)::before { animation-duration: 13s; }
+  .event-calendar-container .firefly:nth-child(12)::after { animation-duration: 13s, 7800ms; animation-delay: 0ms, 1900ms; }
+
+  .event-calendar-container .firefly:nth-child(13) { animation-name: move13; }
+  .event-calendar-container .firefly:nth-child(13)::before { animation-duration: 12s; }
+  .event-calendar-container .firefly:nth-child(13)::after { animation-duration: 12s, 6700ms; animation-delay: 0ms, 1700ms; }
+
+  .event-calendar-container .firefly:nth-child(14) { animation-name: move14; }
+  .event-calendar-container .firefly:nth-child(14)::before { animation-duration: 10s; }
+  .event-calendar-container .firefly:nth-child(14)::after { animation-duration: 10s, 5800ms; animation-delay: 0ms, 1300ms; }
+
+  .event-calendar-container .firefly:nth-child(15) { animation-name: move15; }
+  .event-calendar-container .firefly:nth-child(15)::before { animation-duration: 14s; }
+  .event-calendar-container .firefly:nth-child(15)::after { animation-duration: 14s, 7300ms; animation-delay: 0ms, 2300ms; }
+
+  .event-calendar-container .firefly:nth-child(16) { animation-name: move16; }
+  .event-calendar-container .firefly:nth-child(16)::before { animation-duration: 9s; }
+  .event-calendar-container .firefly:nth-child(16)::after { animation-duration: 9s, 5200ms; animation-delay: 0ms, 1100ms; }
+
+  .event-calendar-container .firefly:nth-child(17) { animation-name: move17; }
+  .event-calendar-container .firefly:nth-child(17)::before { animation-duration: 13s; }
+  .event-calendar-container .firefly:nth-child(17)::after { animation-duration: 13s, 6900ms; animation-delay: 0ms, 2400ms; }
+
+  .event-calendar-container .firefly:nth-child(18) { animation-name: move18; }
+  .event-calendar-container .firefly:nth-child(18)::before { animation-duration: 11s; }
+  .event-calendar-container .firefly:nth-child(18)::after { animation-duration: 11s, 6300ms; animation-delay: 0ms, 1400ms; }
+
+  .event-calendar-container .firefly:nth-child(19) { animation-name: move19; }
+  .event-calendar-container .firefly:nth-child(19)::before { animation-duration: 15s; }
+  .event-calendar-container .firefly:nth-child(19)::after { animation-duration: 15s, 7600ms; animation-delay: 0ms, 2600ms; }
+
+  .event-calendar-container .firefly:nth-child(20) { animation-name: move20; }
+  .event-calendar-container .firefly:nth-child(20)::before { animation-duration: 10s; }
+  .event-calendar-container .firefly:nth-child(20)::after { animation-duration: 10s, 5400ms; animation-delay: 0ms, 1200ms; }
+
+  .event-calendar-container .firefly:nth-child(21) { animation-name: move21; }
+  .event-calendar-container .firefly:nth-child(21)::before { animation-duration: 12s; }
+  .event-calendar-container .firefly:nth-child(21)::after { animation-duration: 12s, 7100ms; animation-delay: 0ms, 2200ms; }
+
+  .event-calendar-container .firefly:nth-child(22) { animation-name: move22; }
+  .event-calendar-container .firefly:nth-child(22)::before { animation-duration: 14s; }
+  .event-calendar-container .firefly:nth-child(22)::after { animation-duration: 14s, 7400ms; animation-delay: 0ms, 2700ms; }
+
+  .event-calendar-container .firefly:nth-child(23) { animation-name: move23; }
+  .event-calendar-container .firefly:nth-child(23)::before { animation-duration: 9s; }
+  .event-calendar-container .firefly:nth-child(23)::after { animation-duration: 9s, 5100ms; animation-delay: 0ms, 1000ms; }
+
+  .event-calendar-container .firefly:nth-child(24) { animation-name: move24; }
+  .event-calendar-container .firefly:nth-child(24)::before { animation-duration: 13s; }
+  .event-calendar-container .firefly:nth-child(24)::after { animation-duration: 13s, 6800ms; animation-delay: 0ms, 2300ms; }
+
+  .event-calendar-container .firefly:nth-child(25) { animation-name: move25; }
+  .event-calendar-container .firefly:nth-child(25)::before { animation-duration: 11s; }
+  .event-calendar-container .firefly:nth-child(25)::after { animation-duration: 11s, 6400ms; animation-delay: 0ms, 1500ms; }
 
   /* Add 5 more fireflies for lower half */
-  .event-calendar-container .firefly:nth-child(26) { animation-name: move26; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(27) { animation-name: move27; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(28) { animation-name: move28; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(29) { animation-name: move29; animation-iteration-count: infinite; }
-  .event-calendar-container .firefly:nth-child(30) { animation-name: move30; animation-iteration-count: infinite; }
+  .event-calendar-container .firefly:nth-child(26) { animation-name: move26; }
+  .event-calendar-container .firefly:nth-child(26)::before { animation-duration: 10s; }
+  .event-calendar-container .firefly:nth-child(26)::after { animation-duration: 10s, 5500ms; animation-delay: 0ms, 1300ms; }
+
+  .event-calendar-container .firefly:nth-child(27) { animation-name: move27; }
+  .event-calendar-container .firefly:nth-child(27)::before { animation-duration: 12s; }
+  .event-calendar-container .firefly:nth-child(27)::after { animation-duration: 12s, 6500ms; animation-delay: 0ms, 1700ms; }
+
+  .event-calendar-container .firefly:nth-child(28) { animation-name: move28; }
+  .event-calendar-container .firefly:nth-child(28)::before { animation-duration: 11s; }
+  .event-calendar-container .firefly:nth-child(28)::after { animation-duration: 11s, 6000ms; animation-delay: 0ms, 1500ms; }
+
+  .event-calendar-container .firefly:nth-child(29) { animation-name: move29; }
+  .event-calendar-container .firefly:nth-child(29)::before { animation-duration: 13s; }
+  .event-calendar-container .firefly:nth-child(29)::after { animation-duration: 13s, 7000ms; animation-delay: 0ms, 1900ms; }
+
+  .event-calendar-container .firefly:nth-child(30) { animation-name: move30; }
+  .event-calendar-container .firefly:nth-child(30)::before { animation-duration: 9s; }
+  .event-calendar-container .firefly:nth-child(30)::after { animation-duration: 9s, 5000ms; animation-delay: 0ms, 1100ms; }
 
   /* Additional movement patterns for lower half */
   @keyframes move26 { 0% { transform: translateX(-20vw) translateY(40vh) scale(0.6); } 100% { transform: translateX(40vw) translateY(20vh) scale(0.8); } }
@@ -869,6 +957,9 @@
   }
   
   @media (max-width: 480px) {
+    .calendar_mini_wrapper{
+      opacity: 0.9;
+    }
     .event-calendar-container {
       padding: 15px 1%;
       min-height: auto;
@@ -1200,9 +1291,9 @@
   /* Mobile-specific adjustments for fireflies */
   @media (max-width: 768px) {
     .event-calendar-container .firefly {
-      width: 4px;
-      height: 4px;
-      margin: -2px 0 0 2px;
+      width: 4px;  /* Reduced from 8px to 4px */
+      height: 4px;  /* Reduced from 8px to 4px */
+      margin: -2px 0 0 2px;  /* Adjusted margin to match new size */
     }
 
     .event-calendar-container .firefly::before,
@@ -1210,43 +1301,6 @@
       width: 100%;
       height: 100%;
     }
-
-    /* Adjust movement ranges for mobile */
-    @keyframes move1 { 0% { transform: translateX(-150px) translateY(-200px) scale(0.8); } 100% { transform: translateX(150px) translateY(200px) scale(1); } }
-    @keyframes move2 { 0% { transform: translateX(-200px) translateY(150px) scale(0.9); } 100% { transform: translateX(200px) translateY(-150px) scale(1.1); } }
-    @keyframes move3 { 0% { transform: translateX(150px) translateY(-150px) scale(0.7); } 100% { transform: translateX(-200px) translateY(200px) scale(0.9); } }
-    @keyframes move4 { 0% { transform: translateX(-180px) translateY(-180px) scale(1); } 100% { transform: translateX(180px) translateY(180px) scale(1.2); } }
-    @keyframes move5 { 0% { transform: translateX(200px) translateY(-200px) scale(0.9); } 100% { transform: translateX(-150px) translateY(150px) scale(1.1); } }
-    @keyframes move6 { 0% { transform: translateX(-120px) translateY(200px) scale(0.8); } 100% { transform: translateX(200px) translateY(-120px) scale(1); } }
-    @keyframes move7 { 0% { transform: translateX(180px) translateY(180px) scale(0.9); } 100% { transform: translateX(-180px) translateY(-180px) scale(1.1); } }
-    @keyframes move8 { 0% { transform: translateX(-200px) translateY(-120px) scale(1); } 100% { transform: translateX(120px) translateY(200px) scale(1.2); } }
-    @keyframes move9 { 0% { transform: translateX(150px) translateY(-200px) scale(0.9); } 100% { transform: translateX(-200px) translateY(150px) scale(1.1); } }
-    @keyframes move10 { 0% { transform: translateX(-180px) translateY(180px) scale(0.8); } 100% { transform: translateX(180px) translateY(-180px) scale(1); } }
-    @keyframes move11 { 0% { transform: translateX(200px) translateY(-150px) scale(0.9); } 100% { transform: translateX(-150px) translateY(200px) scale(1.1); } }
-    @keyframes move12 { 0% { transform: translateX(-150px) translateY(-200px) scale(1); } 100% { transform: translateX(200px) translateY(150px) scale(1.2); } }
-    @keyframes move13 { 0% { transform: translateX(180px) translateY(180px) scale(0.9); } 100% { transform: translateX(-180px) translateY(-180px) scale(1.1); } }
-    @keyframes move14 { 0% { transform: translateX(-200px) translateY(150px) scale(0.8); } 100% { transform: translateX(150px) translateY(-200px) scale(1); } }
-    @keyframes move15 { 0% { transform: translateX(150px) translateY(-180px) scale(0.9); } 100% { transform: translateX(-180px) translateY(150px) scale(1.1); } }
-    @keyframes move16 { 0% { transform: translateX(-140px) translateY(200px) scale(0.8); } 100% { transform: translateX(200px) translateY(-140px) scale(1); } }
-    @keyframes move17 { 0% { transform: translateX(200px) translateY(-200px) scale(0.9); } 100% { transform: translateX(-200px) translateY(200px) scale(1.1); } }
-    @keyframes move18 { 0% { transform: translateX(-130px) translateY(-220px) scale(0.7); } 100% { transform: translateX(220px) translateY(130px) scale(0.9); } }
-    @keyframes move19 { 0% { transform: translateX(160px) translateY(-160px) scale(1); } 100% { transform: translateX(-160px) translateY(160px) scale(1.2); } }
-    @keyframes move20 { 0% { transform: translateX(-190px) translateY(170px) scale(0.9); } 100% { transform: translateX(170px) translateY(-190px) scale(1.1); } }
-    @keyframes move21 { 0% { transform: translateX(140px) translateY(220px) scale(0.8); } 100% { transform: translateX(-220px) translateY(-140px) scale(1); } }
-    @keyframes move22 { 0% { transform: translateX(-210px) translateY(-130px) scale(0.9); } 100% { transform: translateX(130px) translateY(210px) scale(1.1); } }
-    @keyframes move23 { 0% { transform: translateX(170px) translateY(-190px) scale(1); } 100% { transform: translateX(-190px) translateY(170px) scale(1.2); } }
-    @keyframes move24 { 0% { transform: translateX(-150px) translateY(200px) scale(0.9); } 100% { transform: translateX(200px) translateY(-150px) scale(1.1); } }
-    @keyframes move25 { 0% { transform: translateX(190px) translateY(170px) scale(0.8); } 100% { transform: translateX(-170px) translateY(-190px) scale(1); } }
-    @keyframes move26 { 0% { transform: translateX(-170px) translateY(220px) scale(0.8); } 100% { transform: translateX(220px) translateY(-170px) scale(1); } }
-    @keyframes move27 { 0% { transform: translateX(210px) translateY(180px) scale(0.9); } 100% { transform: translateX(-180px) translateY(210px) scale(1.1); } }
-    @keyframes move28 { 0% { transform: translateX(-180px) translateY(180px) scale(0.7); } 100% { transform: translateX(180px) translateY(-180px) scale(0.9); } }
-    @keyframes move29 { 0% { transform: translateX(160px) translateY(220px) scale(1); } 100% { transform: translateX(-220px) translateY(-160px) scale(1.2); } }
-    @keyframes move30 { 0% { transform: translateX(-200px) translateY(130px) scale(0.9); } 100% { transform: translateX(130px) translateY(-200px) scale(1.1); } }
-    @keyframes move31 { 0% { transform: translateX(-210px) translateY(240px) scale(0.8); } 100% { transform: translateX(240px) translateY(-210px) scale(1); } }
-    @keyframes move32 { 0% { transform: translateX(230px) translateY(190px) scale(0.9); } 100% { transform: translateX(-190px) translateY(230px) scale(1.1); } }
-    @keyframes move33 { 0% { transform: translateX(-160px) translateY(200px) scale(0.7); } 100% { transform: translateX(200px) translateY(-160px) scale(0.9); } }
-    @keyframes move34 { 0% { transform: translateX(190px) translateY(240px) scale(1); } 100% { transform: translateX(-240px) translateY(-190px) scale(1.2); } }
-    @keyframes move35 { 0% { transform: translateX(-220px) translateY(130px) scale(0.9); } 100% { transform: translateX(130px) translateY(-220px) scale(1.1); } }
 
     /* Adjust flash animation for mobile with smaller glow */
     @keyframes flash {
@@ -1256,7 +1310,7 @@
       }
       5% {
         opacity: 1;
-        box-shadow: 0 0 2px 1px yellow;
+        box-shadow: 0 0 2px 1px yellow;  /* Reduced glow size */
       }
     }
   }
