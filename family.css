@@ -153,8 +153,8 @@
 }
 
 .testimonial-avatar img {
-    height: 4.8rem;
-    width: 4.8rem;
+    height: 5rem;
+    width: 5rem;
     border-radius: 50%;
     border: 2px solid white;
     background-color: #1e293b;
@@ -574,12 +574,11 @@
         max-height: 100px;
         gap: 0.35rem;
     }
-    
-    .testimonial-avatar img {
-        height: 2.8rem;
-        width: 2.8rem;
+    .testimonial-avatar img{
+        height: 3.1rem;
+        width: 3.1rem;
     }
-    
+ 
     .testimonial-heading {
         font-size: 1.25rem;
         margin-top: 0.05rem;
