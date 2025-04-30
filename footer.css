@@ -160,7 +160,7 @@
 
 /* Remove the flowing line animation */
 .developer-credit a::after {
-  content: '';
+  /* content: ''; */
   position: absolute;
   width: 100%;
   height: 2px;
