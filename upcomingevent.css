@@ -24,9 +24,7 @@
   position: relative;
   padding-left: 1rem;
 }
-.latest-events-title.animate {
-  animation: cinematicText 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
+
 
 @keyframes cinematicText {
   0% {
@@ -273,6 +271,9 @@
     max-width: 90%;
     flex-direction: column;
     margin: 0 auto;
+  }
+  .latest-events-title.animate {
+    animation: cinematicText 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   }
 
   .event-image {

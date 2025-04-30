@@ -28,7 +28,7 @@ function initTeamTabs() {
 
         // Show/hide search container based on tab
         searchContainers.forEach(container => {
-            if (tabId === 'execoms' || tabId === 'heads') {
+            if (tabId === 'execoms') {
                 container.style.display = 'block';
             } else {
                 container.style.display = 'none';
