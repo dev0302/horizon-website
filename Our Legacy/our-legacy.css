@@ -285,12 +285,6 @@ body {
     border-color: rgba(34, 211, 238, 0.3);
 }
 
-.photo-caption {
-    margin-top: 1rem;
-    font-style: italic;
-    color: var(--text-color);
-    opacity: 0.8;
-}
 
 /* Team Photos Section */
 .team-photos {

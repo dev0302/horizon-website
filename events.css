@@ -740,17 +740,7 @@
   }
 }
 
-.latest-events-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.2rem;
-  transition: all 0.3s ease;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3),
-              0 0 40px rgba(139, 92, 246, 0.2);
-}
+
 
 .latest-events-container:hover {
   transform: translateY(-5px);
@@ -766,8 +756,8 @@
   border-radius: 20px;
   padding: 2px;
   background: linear-gradient(45deg, 
-    rgba(34, 211, 238, 0.5),
-    rgba(139, 92, 246, 0.5)
+    rgba(34, 211, 238, 0.189),
+    rgba(138, 92, 246, 0.299)
   );
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;

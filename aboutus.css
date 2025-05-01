@@ -49,35 +49,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000; */
+
 }
+
 .image-container {
-  margin-top: 3.2rem;
-  max-height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   overflow: hidden;
-  border: none;
-  border-radius: 25px;
-  height: 57vh;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-  /* will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000; */
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  background: #1e293b;
+  padding: 1rem;
+  border: 1px solid rgba(34, 211, 238, 0.1);
 }
 .section-image {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 25px;
   transition: transform 0.6s ease, filter 0.6s ease;
   filter: grayscale(0.1) brightness(0.95);
-  /* will-change: transform, filter;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000; */
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease;
+
+
 }
 
  /* Small Mobile Devices */
@@ -101,7 +101,7 @@
   .image-container {
     transform: none;
     will-change: auto;
-    height: 40vh;
+    height: auto;
     margin-top: 1.5rem;
   }
   
@@ -131,21 +131,12 @@
   .main-section {
     padding: 0 1.5rem;
   }
-  
-  .image-container {
-    height: 26vh;
-    width: 75vw;
-  }
 }
 
 /* Landscape Orientation Specific */
 @media (orientation: landscape) {
   .main-section {
     padding: 0 2rem;
-  }
-  
-  .image-container {
-    height: 70vh;
   }
 }
 
@@ -174,9 +165,7 @@
   .button-group{
       justify-content: start;
   }
-  .image-container{
-      height: 70vh;
-  }
+
   
 }
 /* Initial state before scroll */
@@ -229,9 +218,6 @@
     max-width: 55%;
   }
   
-  .image-container {
-    height: 80vh;
-  }
 }
 
 /* Landscape Tablets and Small Desktops */
@@ -246,7 +232,7 @@
   }
   
   .image-container {
-    height: 75vh;
+    height: auto;
   }
 }
 
@@ -260,10 +246,7 @@
   .content-left {
     max-width: 45%;
   }
-  
-  .image-container {
-    height: 65vh;
-  }
+
   
   #about_us_para {
     font-size: 1.8rem;
@@ -285,7 +268,6 @@
   }
   
   .image-container {
-    height: 50vh;
     margin-top: 2rem;
   }
   
@@ -331,6 +313,14 @@
   .image-container:hover .section-image {
     transform: none;
   }
+}
+
+.photo-caption {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  font-style: italic;
 }
 
 /* Enhanced About Us Text Animation */
