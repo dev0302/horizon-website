@@ -517,7 +517,7 @@ body {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(34, 211, 238, 0.1);
-    max-width: 800px;
+    max-width: 85%;
 }
 
 .legacy-link-section::before {
@@ -623,6 +623,6 @@ body {
   height: 100%;
   width: 100%;
   background-color: #111827;
-  padding: 2rem;
+  padding: 0.1rem;
+  margin-top: -4rem;
 }
-

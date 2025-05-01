@@ -24,7 +24,7 @@ body {
     padding: 0 2rem;
 }
 .legacy_link_wrapper{
-    padding: 2rem 2rem;
+    padding: 0.5rem;
     height: 100%;
     width: 100%;
     background-color: black;
@@ -45,7 +45,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
 .logo-area a {
@@ -210,6 +210,7 @@ body {
     margin-bottom: 1.5rem;
     color: var(--secondary-color);
     text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+    text-align: center;
 }
 
 .team-members {
@@ -221,7 +222,7 @@ body {
 .member-card {
     text-align: center;
     transition: all 0.3s ease;
-    padding: 1rem;
+    padding: 1rem 0rem;
     border-radius: 0.5rem;
     background: rgba(30, 41, 59, 0.5);
 }
@@ -343,7 +344,7 @@ body {
 /* Responsive Design for Photos */
 @media (max-width: 768px) {
     .team-members{
-        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
     .member-image{
         width: 90px;
@@ -363,13 +364,33 @@ body {
     }
 
     .photo-item {
+        width: 110%;
+        margin-left: -2.2rem;
         margin-bottom: 2rem;
     }
+    .photo-caption{
+        font-size: 0.8rem;
+    }
+    
     .logo-text {
         font-size: 0.9rem;
         color: var(--primary-color);
         /* text-shadow: 0 0 10px rgba(34, 211, 238, 0.3); */
     }
+    .timeline-year {
+        margin-bottom: 8rem;
+        position: relative;
+        padding: 2rem 1.25rem;
+        border-radius: 1rem;
+        background: rgba(30, 41, 59, 0.5);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(34, 211, 238, 0.1);
+        transition: transform 0.3s ease;
+    }
+    .year-title{
+        font-size: 2rem;
+    }
+
 }
 
 /* Footer Styles */
@@ -607,7 +628,7 @@ body {
 /* Responsive Design for Department Cards */
 @media (max-width: 768px) {
     .departments-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
         gap: 1rem;
     }
 
