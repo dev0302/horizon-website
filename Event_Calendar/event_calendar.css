@@ -614,9 +614,124 @@
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+
+  /* Event Gallery Styles */
+.event-gallery {
+  margin-top: 2rem;
+  border-top: 1px solid #334155;
+  padding-top: 1.5rem;
+}
+
+.gallery-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #f8fafc;
+  margin-bottom: 1rem;
+}
+
+.gallery-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  transition: transform 0.3s ease;
+  background-color: #1e293b;
+}
+
+/* Mobile Gallery Layout */
+@media (max-width: 480px) {
+  .event-gallery {
+    margin-top: 1rem;
+    padding-top: 1rem;
+  }
+
+  .gallery-images {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 4px;
+    scroll-snap-type: x mandatory;
+  }
+
+  .gallery-image {
+    flex: 0 0 calc(33.333% - 6px);
+    width: calc(33.333% - 6px);
+    min-width: calc(33.333% - 6px);
+    height: 70px;
+    scroll-snap-align: start;
+  }
+
+  .gallery-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .gallery-images::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .gallery-images {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
   
   /* Mobile-specific adjustments */
   @media (max-width: 480px) {
+    .calendar_mini_wrapper{
+      opacity: 0.9;
+    }
+    
+    /* Mobile Gallery Styles - Updated */
+    .mobile-gallery {
+      margin-top: 1rem;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .mobile-gallery-image {
+      width: 32%;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: inline-block;
+      margin-right: 1%;
+    }
+
+    .mobile-gallery-image:last-child {
+      margin-right: 0;
+    }
+
+    /* Force images to stay in one row */
+    .calendar-mobile-details__content .mobile-gallery {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      gap: 5px;
+    }
+
+    .calendar-mobile-details__content .mobile-gallery-image {
+      flex: 0 0 32%;
+      margin: 0;
+    }
+
+    .event-calendar-container {
+      padding: 15px 1%;
+      min-height: auto;
+      height: auto;
+    }
+    
     .calendar-mobile-details {
       max-height: 85vh;
       width: 95%;
@@ -1314,3 +1429,58 @@
       }
     }
   }
+
+  /* Mobile Gallery Styles */
+  .mobile-gallery {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .mobile-gallery-image {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #334155;
+  }
+
+  @media (max-width: 480px) {
+    .mobile-gallery-image {
+      height: 100px;
+    }
+  }
+
+.event-details_calendar .event-gallery {
+  margin-top: 1rem;
+}
+
+.event-details_calendar .gallery-images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.event-details_calendar .gallery-image {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 480px) {
+  .event-details_calendar .gallery-images {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    gap: 5px !important;
+  }
+
+  .event-details_calendar .gallery-image {
+    width: 32% !important;
+    height: 70px !important;
+    flex: 0 0 32% !important;
+  }
+}

@@ -82,96 +82,13 @@
       });
     });
     
-    // Add Event button click handler - Not currently in use
-    /*
-    addEventBtn.addEventListener('click', function() {
-      eventFormModal.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      // Set default date to today
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('newEventDate').value = today;
-    });
-    
-    // Close form button
-    closeFormBtn.addEventListener('click', function() {
-      eventFormModal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    });
-    
-    // Close form when clicking outside
-    eventFormModal.addEventListener('click', function(e) {
-      if (e.target === eventFormModal) {
-        eventFormModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-      }
-    });
-    
-    // Form submission handler
-    eventForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      try {
-        // Get form values
-        const date = document.getElementById('newEventDate').value;
-        const time = document.getElementById('newEventTime').value;
-        const title = document.getElementById('newEventTitle').value;
-        const description = document.getElementById('newEventDescription').value;
-        const location = document.getElementById('newEventLocation').value;
-        
-        // Validate required fields
-        if (!date || !time || !title) {
-          throw new Error("Please fill all required fields");
-        }
-        
-        // Parse date
-        const dateObj = new Date(date);
-        const month = dateObj.getMonth();
-        const day = dateObj.getDate();
-        const year = dateObj.getFullYear();
-        
-        // Format time (convert to 12-hour format)
-        const timeParts = time.split(':');
-        let hours = parseInt(timeParts[0]);
-        const minutes = timeParts[1];
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        hours = hours % 12;
-        hours = hours ? hours : 12;
-        const formattedTime = `${hours}:${minutes} ${ampm}`;
-        const formattedDate = `${months[month]} ${day}, ${year} • ${formattedTime}`;
-        
-        // Prepare event data for Firestore
-        const eventData = {
-          title: title,
-          date: formattedDate,
-          description: description,
-          location: location,
-          timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          dateKey: `${month}-${day}`,
-          yearMonth: `${year}-${month}`,
-          rawDate: date,
-          rawTime: time
-        };
-        
-        // Add document to Firestore
-        await db.collection('events').add(eventData);
-        
-        // Close form and reset
-        eventFormModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        this.reset();
-      } catch (error) {
-        console.error("Error adding event:", error);
-        alert(`Error: ${error.message}`);
-      }
-    });
-    */
-    
     // Modal close handlers
     eventModal.addEventListener('click', function(e) {
       if (e.target === eventModal) {
         closeEventModal();
       }
     });
+    
     // Core Functions
     
     /**
@@ -322,13 +239,74 @@
         eventTitle.textContent = event.title;
         eventDate.textContent = event.date;
         eventContentText.innerHTML = event.description;
-      } 
+        
+        // Create ID from event title (replace spaces with underscores)
+        const eventId = event.title.replace(/\s+/g, '_');
+        
+        // Try to find the image container for this event
+        const imageContainer = document.getElementById(eventId);
+        
+        // Get all images from the container if it exists
+        const imageUrls = [];
+        if (imageContainer) {
+          const images = imageContainer.querySelectorAll('img');
+          images.forEach(img => {
+            if (img.src) {
+              imageUrls.push(img.src);
+            }
+          });
+        }
+        
+        // Set images or hide if not available
+        document.getElementById('eventImage1').src = imageUrls[0] || '';
+        document.getElementById('eventImage1').style.display = imageUrls[0] ? 'block' : 'none';
+        
+        document.getElementById('eventImage2').src = imageUrls[1] || '';
+        document.getElementById('eventImage2').style.display = imageUrls[1] ? 'block' : 'none';
+        
+        document.getElementById('eventImage3').src = imageUrls[2] || '';
+        document.getElementById('eventImage3').style.display = imageUrls[2] ? 'block' : 'none';
+        
+        // Show/hide gallery title based on whether any images exist
+        document.querySelector('.gallery-title').style.display = 
+          imageUrls.length > 0 ? 'block' : 'none';
+      }
       // Mobile view - show in modal
       else {
         // Update mobile event details with event data
         document.getElementById('calendarMobileEventTitle').textContent = event.title;
         document.getElementById('calendarMobileEventDate').textContent = event.date;
         document.getElementById('calendarMobileEventContent').innerHTML = event.description;
+        
+        // Create ID from event title (replace spaces with underscores)
+        const eventId = event.title.replace(/\s+/g, '_');
+        
+        // Try to find the image container for this event
+        const imageContainer = document.getElementById(eventId);
+        
+        // Get all images from the container if it exists
+        const imageUrls = [];
+        if (imageContainer) {
+          const images = imageContainer.querySelectorAll('img');
+          images.forEach(img => {
+            if (img.src) {
+              imageUrls.push(img.src);
+            }
+          });
+        }
+        
+        // Add images to mobile content if they exist
+        if (imageUrls.length > 0) {
+          const imageGallery = document.createElement('div');
+          imageGallery.className = 'mobile-gallery';
+          imageUrls.forEach(url => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.className = 'mobile-gallery-image';
+            imageGallery.appendChild(img);
+          });
+          document.getElementById('calendarMobileEventContent').appendChild(imageGallery);
+        }
         
         // Show the modal
         eventModal.style.display = 'flex';
