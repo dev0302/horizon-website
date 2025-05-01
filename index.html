@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="family.css">
   <link rel="stylesheet" href="mentor.css">
   <link rel="stylesheet" href="footer.css">
-  <link rel="stylesheet" href="landingpage2.css">
+  <link rel="stylesheet" href="landingpage.css">
   <link rel="stylesheet" href="aboutus.css">
   <link rel="stylesheet" href="animations.css">
   <link rel="stylesheet" href="upcomingevent.css">
@@ -1065,11 +1065,11 @@
   // Initialize AOS (Animate On Scroll)
   document.addEventListener('DOMContentLoaded', function() {
       AOS.init({
-          duration: 800,        // Restored original duration
-          once: true,           // Whether animation should happen only once
+          duration: 600,        
+          once: true,           
           offset: 50,           // Reduced from 120 to 50 to trigger animations earlier
-          easing: 'ease-in-out' // Restored original easing
-      });
+          easing: 'ease-in-out' 
+      })
 
       // Add specific settings for about us section
       const aboutElements = document.querySelectorAll('#about-us [data-aos]');

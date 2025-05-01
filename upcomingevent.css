@@ -339,13 +339,7 @@
   animation: fadeInOut 8s infinite;
 }
 
-.upcoming-path-cyan {
-  stroke: url(#upcoming-grad1);
-}
 
-.upcoming-path-violet {
-  stroke: url(#upcoming-grad2);
-}
 
 .upcoming-event-card.visibles-container {
   position: absolute;
@@ -386,21 +380,6 @@
   will-change: transform, opacity;
 }
 
-.upcoming-event-orb-cyan {
-  height: 32rem;
-  width: 32rem;
-  top: 25%;
-  left: -25%;
-  background-color: rgba(34, 211, 238, 0.5);
-}
-
-.upcoming-event-orb-violet {
-  height: 32rem;
-  width: 32rem;
-  top: 50%;
-  right: -25%;
-  background-color: rgba(139, 92, 246, 0.5);
-}
 
 /* Upcoming Event Content */
 .upcoming-event-container {
