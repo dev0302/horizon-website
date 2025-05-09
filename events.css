@@ -290,6 +290,25 @@
   box-shadow: rgba(223, 219, 219, 0.4) 0px 2px 8px 0px;
 }
 
+.photo-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(198, 183, 198, 0.091);
+  transition: all 0.3s ease;
+  background: var(--card-background);
+  padding: 1rem;
+  border: 1px solid rgba(34, 211, 238, 0.1);
+}
+
+.photo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(225, 222, 222, 0.187);
+  border-color: rgba(34, 211, 238, 0.3);
+}
+.photo-item:hover .team-image {
+    transform: scale(1.02);
+}
 /* Responsive grid adjustment */
 @media (max-width: 1024px) {
   .event-timeline-images {

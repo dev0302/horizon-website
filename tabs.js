@@ -112,7 +112,7 @@ function initTeamTabs() {
     const searchInputs = document.querySelectorAll('.search-input');
     const searchButtons = document.querySelectorAll('.search-button');
     const suggestionsContainers = document.querySelectorAll('.search-suggestions');
-    const memberLists = document.querySelectorAll('.name-grid span, .testimonial-details h3, .team-heads .members span');
+    const memberLists = document.querySelectorAll('.name-grid span, .team-heads .members span');
 
     searchInputs.forEach((searchInput, index) => {
         const suggestionsContainer = suggestionsContainers[index];
